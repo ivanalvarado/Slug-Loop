@@ -14,6 +14,7 @@
 		652A69B120166D78001E9DC5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 652A69AF20166D78001E9DC5 /* LaunchScreen.storyboard */; };
 		652A69BC20166D78001E9DC5 /* SlugBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69BB20166D78001E9DC5 /* SlugBusTests.swift */; };
 		652A69C720166D78001E9DC5 /* SlugBusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69C620166D78001E9DC5 /* SlugBusUITests.swift */; };
+		652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D520166F98001E9DC5 /* MapKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		652A69C220166D78001E9DC5 /* SlugBusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlugBusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		652A69C620166D78001E9DC5 /* SlugBusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlugBusUITests.swift; sourceTree = "<group>"; };
 		652A69C820166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +84,7 @@
 				652A69BA20166D78001E9DC5 /* SlugBusTests */,
 				652A69C520166D78001E9DC5 /* SlugBusUITests */,
 				652A69A420166D78001E9DC5 /* Products */,
+				652A69D420166F98001E9DC5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -123,6 +127,14 @@
 				652A69C820166D78001E9DC5 /* Info.plist */,
 			);
 			path = SlugBusUITests;
+			sourceTree = "<group>";
+		};
+		652A69D420166F98001E9DC5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				652A69D520166F98001E9DC5 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +206,11 @@
 					652A69A220166D78001E9DC5 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					652A69B620166D78001E9DC5 = {
 						CreatedOnToolsVersion = 9.2;
