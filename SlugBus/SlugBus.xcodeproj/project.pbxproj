@@ -16,6 +16,7 @@
 		652A69C720166D78001E9DC5 /* SlugBusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69C620166D78001E9DC5 /* SlugBusUITests.swift */; };
 		652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D520166F98001E9DC5 /* MapKit.framework */; };
 		652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D72016B039001E9DC5 /* CoreLocation.framework */; };
+		652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69D92016CC53001E9DC5 /* BusStop.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		652A69C820166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		652A69D72016B039001E9DC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		652A69D92016CC53001E9DC5 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				652A69AD20166D78001E9DC5 /* Assets.xcassets */,
 				652A69AF20166D78001E9DC5 /* LaunchScreen.storyboard */,
 				652A69B220166D78001E9DC5 /* Info.plist */,
+				652A69D92016CC53001E9DC5 /* BusStop.swift */,
 			);
 			path = SlugBus;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */,
 				652A69A920166D78001E9DC5 /* ViewController.swift in Sources */,
 				652A69A720166D78001E9DC5 /* AppDelegate.swift in Sources */,
 			);
