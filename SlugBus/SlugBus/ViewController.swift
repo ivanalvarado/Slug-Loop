@@ -13,9 +13,13 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    
+    let ucscCampusLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
+    let distanceSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
     var locationManager: CLLocationManager!
     var cwBusStopList  = [BusStop]()  // Clockwise Bus Stops
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
+    var areBusStopsShowing = true
     
     // Bus Stops
     var ccwBusStop0, ccwBusStop1, ccwBusStop2, ccwBusStop3, ccwBusStop4, ccwBusStop5, ccwBusStop6, ccwBusStop7, ccwBusStop8, ccwBusStop9, ccwBusStop10, ccwBusStop11, ccwBusStop12, ccwBusStop13, ccwBusStop14, ccwBusStop15, cwBusStop0, cwBusStop1, cwBusStop2, cwBusStop3, cwBusStop4, cwBusStop5, cwBusStop6, cwBusStop7, cwBusStop8, cwBusStop9, cwBusStop10, cwBusStop11, cwBusStop12: BusStop!
@@ -25,8 +29,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // Do any additional setup after loading the view, typically from a nib.
         
         // Center map on UCSC campus
-        let ucscCampusLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
-        let distanceSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
         mapView.setRegion(MKCoordinateRegionMake(ucscCampusLocation, distanceSpan), animated: true)
         
         locationManager = CLLocationManager()
@@ -39,10 +41,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
         
         buildBusStopLists()
-        
-        // Todo: Toggle button that add/hides bus stops
         displayBusStops()
-        hideBusStops()
     }
     
     /*
@@ -51,6 +50,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
     
+    /*
+     * Called whenever location permissions change.
+     */
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
         case .denied:
@@ -68,6 +70,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         default:
             break
         }
+    }
+    
+    @IBAction func showHideBusStops() {
+        areBusStopsShowing ? hideBusStops() : displayBusStops()
+        areBusStopsShowing = !areBusStopsShowing
+    }
+    
+    @IBAction func recenterMapView() {
+        // Center map on UCSC campus
+        mapView.setRegion(MKCoordinateRegionMake(ucscCampusLocation, distanceSpan), animated: true)
     }
     
     func buildBusStopLists() {

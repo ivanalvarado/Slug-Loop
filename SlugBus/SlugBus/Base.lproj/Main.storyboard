@@ -21,15 +21,45 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5om-Xg-bxy">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zIW-cZ-atg">
+                                <rect key="frame" x="9" y="616" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="qzf-Y1-CRd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Hide"/>
+                                <connections>
+                                    <action selector="showHideBusStops" destination="BYZ-38-t0r" eventType="touchUpInside" id="pw9-er-5yG"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cmq-1b-9N0">
+                                <rect key="frame" x="9" y="568" width="40" height="40"/>
+                                <color key="backgroundColor" red="0.92143100499999997" green="0.92145264149999995" blue="0.92144101860000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Qkr-h9-Lym"/>
+                                    <constraint firstAttribute="width" constant="40" id="U9Q-jI-RaL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="Center"/>
+                                <connections>
+                                    <action selector="recenterMapView" destination="BYZ-38-t0r" eventType="touchUpInside" id="nLz-HX-amn"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="zIW-cZ-atg" firstAttribute="top" secondItem="cmq-1b-9N0" secondAttribute="bottom" constant="8" id="ACb-TR-SD0"/>
+                            <constraint firstItem="zIW-cZ-atg" firstAttribute="leading" secondItem="cmq-1b-9N0" secondAttribute="leading" id="N2f-by-7Em"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="O28-QJ-lOd"/>
+                            <constraint firstItem="cmq-1b-9N0" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="9" id="TQM-3G-kQ0"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="bLp-kM-vWs"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="e2m-Ba-4zZ"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="f52-Ll-FFs"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="gLu-MY-oRY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zIW-cZ-atg" secondAttribute="bottom" constant="11" id="h9J-Jl-Vil"/>
                             <constraint firstItem="5om-Xg-bxy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qVk-ah-ngz"/>
+                            <constraint firstItem="zIW-cZ-atg" firstAttribute="trailing" secondItem="cmq-1b-9N0" secondAttribute="trailing" id="yZy-kE-BtT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -39,6 +69,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="33.733133433283363"/>
         </scene>
     </scenes>
 </document>
