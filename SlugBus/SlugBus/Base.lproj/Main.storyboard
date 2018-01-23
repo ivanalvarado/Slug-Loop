@@ -65,6 +65,7 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="5om-Xg-bxy" id="390-mo-RiY"/>
+                        <outlet property="toggleBusStopsButton" destination="zIW-cZ-atg" id="Eff-1z-nRt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

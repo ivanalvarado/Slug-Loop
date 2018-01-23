@@ -13,9 +13,10 @@ import CoreLocation
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var toggleBusStopsButton: UIButton!
     
-    let ucscCampusLocation: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
-    let distanceSpan: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
+    let UCSC_CAMPUS_LOCATION: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
+    let DISTANCE_SPAN: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
     var locationManager: CLLocationManager!
     var cwBusStopList  = [BusStop]()  // Clockwise Bus Stops
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
@@ -24,12 +25,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     // Bus Stops
     var ccwBusStop0, ccwBusStop1, ccwBusStop2, ccwBusStop3, ccwBusStop4, ccwBusStop5, ccwBusStop6, ccwBusStop7, ccwBusStop8, ccwBusStop9, ccwBusStop10, ccwBusStop11, ccwBusStop12, ccwBusStop13, ccwBusStop14, ccwBusStop15, cwBusStop0, cwBusStop1, cwBusStop2, cwBusStop3, cwBusStop4, cwBusStop5, cwBusStop6, cwBusStop7, cwBusStop8, cwBusStop9, cwBusStop10, cwBusStop11, cwBusStop12: BusStop!
     
+    /*
+     * Fires at the start of the app.
+     */
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         // Center map on UCSC campus
-        mapView.setRegion(MKCoordinateRegionMake(ucscCampusLocation, distanceSpan), animated: true)
+        mapView.setRegion(MKCoordinateRegionMake(UCSC_CAMPUS_LOCATION, DISTANCE_SPAN), animated: true)
         
         locationManager = CLLocationManager()
         locationManager.delegate = self
@@ -48,6 +52,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      * Called whenever the user's location is updated.
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // Might want to update the user's closest bus stop here.
     }
     
     /*
@@ -57,6 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         switch status {
         case .denied:
             print("Denied")
+            // Todo: Ask user to select a bus stop.
             break
         case .notDetermined:
             print("Not Determined")
@@ -72,16 +78,30 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
+    /*
+     * Displays or removes bus stops depending on current state.
+     */
     @IBAction func showHideBusStops() {
-        areBusStopsShowing ? hideBusStops() : displayBusStops()
+        if areBusStopsShowing {
+            hideBusStops()
+            toggleBusStopsButton.setTitle("Show", for: .normal)
+        } else {
+            displayBusStops()
+            toggleBusStopsButton.setTitle("Hide", for: .normal)
+        }
         areBusStopsShowing = !areBusStopsShowing
     }
     
+    /*
+     * Recenters the MapView on UCSC campus.
+     */
     @IBAction func recenterMapView() {
-        // Center map on UCSC campus
-        mapView.setRegion(MKCoordinateRegionMake(ucscCampusLocation, distanceSpan), animated: true)
+        mapView.setRegion(MKCoordinateRegionMake(UCSC_CAMPUS_LOCATION, DISTANCE_SPAN), animated: true)
     }
     
+    /*
+     * Builds a BusStop List data structure of all the bus stops.
+     */
     func buildBusStopLists() {
         
         // =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
@@ -223,6 +243,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         cwBusStopList.append(cwBusStop12)
     }
     
+    /*
+     * Adds an annotation on the MapView of every bus stop on the UCSC campus.
+     */
     func displayBusStops() {
         mapView.addAnnotation(ccwBusStop0)
         mapView.addAnnotation(ccwBusStop1)
@@ -255,6 +278,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         mapView.addAnnotation(cwBusStop12)
     }
     
+    /*
+     * Removes each bus stop annotation on the MapView.
+     */
     func hideBusStops() {
         mapView.removeAnnotation(ccwBusStop0)
         mapView.removeAnnotation(ccwBusStop1)
@@ -325,6 +351,5 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 }
 
