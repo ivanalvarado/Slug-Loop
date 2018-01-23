@@ -15,6 +15,7 @@
 		652A69BC20166D78001E9DC5 /* SlugBusTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69BB20166D78001E9DC5 /* SlugBusTests.swift */; };
 		652A69C720166D78001E9DC5 /* SlugBusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69C620166D78001E9DC5 /* SlugBusUITests.swift */; };
 		652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D520166F98001E9DC5 /* MapKit.framework */; };
+		652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D72016B039001E9DC5 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		652A69C620166D78001E9DC5 /* SlugBusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlugBusUITests.swift; sourceTree = "<group>"; };
 		652A69C820166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		652A69D72016B039001E9DC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */,
 				652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -132,6 +135,7 @@
 		652A69D420166F98001E9DC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				652A69D72016B039001E9DC5 /* CoreLocation.framework */,
 				652A69D520166F98001E9DC5 /* MapKit.framework */,
 			);
 			name = Frameworks;
@@ -444,6 +448,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UF2DGJBY6Z;
 				INFOPLIST_FILE = SlugBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucscslugs.SlugBus;
@@ -458,6 +463,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UF2DGJBY6Z;
 				INFOPLIST_FILE = SlugBus/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ucscslugs.SlugBus;

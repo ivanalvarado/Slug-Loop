@@ -24,6 +24,10 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Enable location services to determine closest bus stops to your current location.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Enable location services to determine closest bus stops to your current location.</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
