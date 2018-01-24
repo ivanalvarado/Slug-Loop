@@ -11,12 +11,16 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
-
-    @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var toggleBusStopsButton: UIButton!
     
     let UCSC_CAMPUS_LOCATION: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
     let DISTANCE_SPAN: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
+    let url = NSURL(string: "http://bts.ucsc.edu:8081/location/get")
+
+    @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var toggleBusStopsButton: UIButton!
+    @IBOutlet weak var recenterButton: UIButton!
+    @IBOutlet weak var closestBusStopView: UIView!
+    
     var locationManager: CLLocationManager!
     var cwBusStopList  = [BusStop]()  // Clockwise Bus Stops
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
@@ -32,6 +36,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        updateButtonUi()
+        
         // Center map on UCSC campus
         mapView.setRegion(MKCoordinateRegionMake(UCSC_CAMPUS_LOCATION, DISTANCE_SPAN), animated: true)
         
@@ -46,6 +52,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         
         buildBusStopLists()
         displayBusStops()
+        
+        let url = URL(string: "http://bts.ucsc.edu:8081/location/get")
+        if let usableUrl = url {
+            let request = URLRequest(url: usableUrl)
+            let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let data = data {
+                    if let stringData = String(data: data, encoding: String.Encoding.utf8) {
+                        print(stringData)
+                    }
+                }
+            })
+            task.resume()
+        }
+    }
+    
+    /*
+     * Add styling to the UIButtons that hover above MapView.
+     */
+    func updateButtonUi() {
+        toggleBusStopsButton.layer.cornerRadius = 4
+        toggleBusStopsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        toggleBusStopsButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        toggleBusStopsButton.layer.shadowOpacity = 1.0
+        toggleBusStopsButton.layer.shadowRadius = 4
+        toggleBusStopsButton.layer.masksToBounds = false
+        
+        recenterButton.layer.cornerRadius = 4
+        recenterButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        recenterButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        recenterButton.layer.shadowOpacity = 1.0
+        recenterButton.layer.shadowRadius = 4
+        recenterButton.layer.masksToBounds = false
+        
+        closestBusStopView.layer.cornerRadius = 4
+        closestBusStopView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        closestBusStopView.layer.shadowOffset = CGSize(width: 0, height: 3)
+        closestBusStopView.layer.shadowOpacity = 1.0
+        closestBusStopView.layer.shadowRadius = 4
+        closestBusStopView.layer.masksToBounds = false
     }
     
     /*
