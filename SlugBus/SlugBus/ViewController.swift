@@ -27,6 +27,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
     var areBusStopsShowing = true
     
+    var timer = Timer()
+    
     // Bus Stops
     var ccwBusStop0, ccwBusStop1, ccwBusStop2, ccwBusStop3, ccwBusStop4, ccwBusStop5, ccwBusStop6, ccwBusStop7, ccwBusStop8, ccwBusStop9, ccwBusStop10, ccwBusStop11, ccwBusStop12, ccwBusStop13, ccwBusStop14, ccwBusStop15, cwBusStop0, cwBusStop1, cwBusStop2, cwBusStop3, cwBusStop4, cwBusStop5, cwBusStop6, cwBusStop7, cwBusStop8, cwBusStop9, cwBusStop10, cwBusStop11, cwBusStop12: BusStop!
     
@@ -54,6 +56,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         buildBusStopLists()
         displayBusStops()
         
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
+//        fetchBusData()
+    }
+    
+    /*
+     * Makes a URL request in order to retrieve JSON bus data.
+     */
+    @objc func fetchBusData() {
         let url = URL(string: "http://bts.ucsc.edu:8081/location/get")
         if let usableUrl = url {
             let request = URLRequest(url: usableUrl)
@@ -64,6 +74,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         do {
                             let readableJSON = try JSON(data: data)
                             print(readableJSON.count)
+                            
+                            if readableJSON.count == 0 {
+                                // Todo: Alert the user no buses are active.
+                            }
+                            
+                            
                         } catch {
                             print("Error")
                         }

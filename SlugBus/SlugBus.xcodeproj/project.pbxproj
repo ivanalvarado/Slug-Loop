@@ -17,6 +17,7 @@
 		652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D520166F98001E9DC5 /* MapKit.framework */; };
 		652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D72016B039001E9DC5 /* CoreLocation.framework */; };
 		652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69D92016CC53001E9DC5 /* BusStop.swift */; };
+		65824DC92019219200D78097 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65824DC82019219200D78097 /* Bus.swift */; };
 		C16616962CD02A7EC84AF6C0 /* Pods_SlugBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		652A69D72016B039001E9DC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		652A69D92016CC53001E9DC5 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
+		65824DC82019219200D78097 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.debug.xcconfig"; sourceTree = "<group>"; };
 		92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.release.xcconfig"; sourceTree = "<group>"; };
 		DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlugBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -119,6 +121,7 @@
 				652A69AF20166D78001E9DC5 /* LaunchScreen.storyboard */,
 				652A69B220166D78001E9DC5 /* Info.plist */,
 				652A69D92016CC53001E9DC5 /* BusStop.swift */,
+				65824DC82019219200D78097 /* Bus.swift */,
 			);
 			path = SlugBus;
 			sourceTree = "<group>";
@@ -358,6 +361,7 @@
 			files = (
 				652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */,
 				652A69A920166D78001E9DC5 /* ViewController.swift in Sources */,
+				65824DC92019219200D78097 /* Bus.swift in Sources */,
 				652A69A720166D78001E9DC5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
