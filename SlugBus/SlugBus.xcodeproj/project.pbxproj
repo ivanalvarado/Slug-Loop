@@ -17,6 +17,7 @@
 		652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D520166F98001E9DC5 /* MapKit.framework */; };
 		652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D72016B039001E9DC5 /* CoreLocation.framework */; };
 		652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69D92016CC53001E9DC5 /* BusStop.swift */; };
+		C16616962CD02A7EC84AF6C0 /* Pods_SlugBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,9 @@
 		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		652A69D72016B039001E9DC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		652A69D92016CC53001E9DC5 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
+		917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.debug.xcconfig"; sourceTree = "<group>"; };
+		92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.release.xcconfig"; sourceTree = "<group>"; };
+		DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SlugBus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			files = (
 				652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */,
 				652A69D620166F98001E9DC5 /* MapKit.framework in Frameworks */,
+				C16616962CD02A7EC84AF6C0 /* Pods_SlugBus.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +95,7 @@
 				652A69C520166D78001E9DC5 /* SlugBusUITests */,
 				652A69A420166D78001E9DC5 /* Products */,
 				652A69D420166F98001E9DC5 /* Frameworks */,
+				8276A8091E5F87010BFA7B7D /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,8 +146,18 @@
 			children = (
 				652A69D72016B039001E9DC5 /* CoreLocation.framework */,
 				652A69D520166F98001E9DC5 /* MapKit.framework */,
+				DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8276A8091E5F87010BFA7B7D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */,
+				92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +167,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 652A69CB20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBus" */;
 			buildPhases = (
+				A1BA03177B70FF835CC124C9 /* [CP] Check Pods Manifest.lock */,
 				652A699F20166D78001E9DC5 /* Sources */,
 				652A69A020166D78001E9DC5 /* Frameworks */,
 				652A69A120166D78001E9DC5 /* Resources */,
+				3D63D375A5EA4BD98713AA9E /* [CP] Embed Pods Frameworks */,
+				F04875A12B72400660F0A34D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -277,6 +296,60 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3D63D375A5EA4BD98713AA9E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A1BA03177B70FF835CC124C9 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SlugBus-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F04875A12B72400660F0A34D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		652A699F20166D78001E9DC5 /* Sources */ = {
@@ -449,6 +522,7 @@
 		};
 		652A69CC20166D78001E9DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +538,7 @@
 		};
 		652A69CD20166D78001E9DC5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

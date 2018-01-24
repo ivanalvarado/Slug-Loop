@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import SwiftyJSON
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -60,6 +61,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 if let data = data {
                     if let stringData = String(data: data, encoding: String.Encoding.utf8) {
                         print(stringData)
+                        do {
+                            let readableJSON = try JSON(data: data)
+                            print(readableJSON.count)
+                        } catch {
+                            print("Error")
+                        }
+                        
                     }
                 }
             })
