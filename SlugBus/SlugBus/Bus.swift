@@ -17,18 +17,19 @@ class Bus: NSObject, MKAnnotation {
     var closestOuterStop = -1
     var id: String
     var quadrant: Int
-    var angle: Double = -1.0
+    var angle: Double
     var direc: String = ""
     var exists: Bool
     var imageName: String = ""
     var innerETA = 0
     var outerETA = 0
     
-    init(title: String, coordinate: CLLocationCoordinate2D, id: String, quadrant: Int, exists: Bool) {
+    init(title: String, coordinate: CLLocationCoordinate2D, id: String, quadrant: Int, angle: Double, exists: Bool) {
         self.title = title
         self.coordinate = coordinate
         self.id = id
         self.quadrant = quadrant
+        self.angle = angle
         self.exists = exists
     }
 }

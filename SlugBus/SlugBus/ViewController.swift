@@ -121,11 +121,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             let lon = Double(bus.1["lon"].string!)
             newMarker.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
             let quadrant = determineMapQuadrant(lat: lat!, lon: lon!)
+            let busAngle = determineBusAngle(lat: lat!, lon: lon!, quadrant: quadrant)
             
             if isOld { // Old data.
-                oldMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, exists: true))
+                oldMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             } else {
-                newMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, exists: true))
+                newMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             }
             
         }
@@ -145,8 +146,40 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     /*
      * Determine angle of current position.
      */
-    func determineBusAngle(lat: Double, lon: Double) {
+    func determineBusAngle(lat: Double, lon: Double, quadrant: Int) -> Double {
+        let p2: CLLocation
+        let angleAggregrate: Double
+        switch quadrant {
+        case 1:
+            p2 = CLLocation(latitude: UCSC_CAMPUS_LOCATION.latitude, longitude: -122.0471)
+            angleAggregrate = 0.0
+            break
+        case 2:
+            p2 = CLLocation(latitude: 37.0030, longitude: UCSC_CAMPUS_LOCATION.longitude)
+            angleAggregrate = 90.0
+            break
+        case 3:
+            p2 = CLLocation(latitude: UCSC_CAMPUS_LOCATION.latitude, longitude: -122.0740)
+            angleAggregrate = 180.0
+            break
+        case 4:
+            p2 = CLLocation(latitude: 36.9732, longitude: UCSC_CAMPUS_LOCATION.longitude)
+            angleAggregrate = 270.0
+            break
+        default:
+            p2 = CLLocation(latitude: UCSC_CAMPUS_LOCATION.latitude, longitude: UCSC_CAMPUS_LOCATION.longitude)
+            angleAggregrate = 0.0
+            break
+        }
         
+        let p1 = CLLocation(latitude: UCSC_CAMPUS_LOCATION.latitude, longitude: UCSC_CAMPUS_LOCATION.longitude)
+        let p3 = CLLocation(latitude: lat, longitude: lon)
+        
+        let p_12 = p1.distance(from: p2)
+        let p_13 = p1.distance(from: p3)
+        let p_23 = p2.distance(from: p3)
+        
+        return acos(((p_12*p_12) + (p_13*p_13) - (p_23*p_23))/(2 * p_12 * p_13)) + angleAggregrate
     }
     
     /*
