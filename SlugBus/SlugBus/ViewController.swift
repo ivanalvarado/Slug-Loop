@@ -25,6 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     var cwBusStopList  = [BusStop]()  // Clockwise Bus Stops
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
+    var oldMainBusList = [Bus]()
+    var newMainBusList = [Bus]()
     var areBusStopsShowing = true
     
     var timer = Timer()
@@ -72,15 +74,31 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     if let stringData = String(data: data, encoding: String.Encoding.utf8) {
                         print(stringData)
                         do {
-                            let readableJSON = try JSON(data: data)
-                            print(readableJSON.count)
+                            let jsonData = try JSON(data: data)
+                            print(jsonData.count)
                             
-                            if readableJSON.count == 0 {
+                            if jsonData.count == 0 {
                                 // Todo: Alert the user no buses are active.
                             }
                             
+                            if self.oldMainBusList.isEmpty {
+                                // We're fetching bus data for the first time, thus we don't know bus directions.
+                                // Todo: Display progress dialog while we determine bus directions.
+                                
+                                self.buildGlobalBusList(readableJson: jsonData, isOld: true)
+                            } else {
+                                
+                                if self.newMainBusList.isEmpty {
+                                    self.buildGlobalBusList(readableJson: jsonData, isOld: false)
+                                    self.determineBusDirections()
+                                } else {
+                                    
+                                }
+                                
+                            }
                             
                         } catch {
+                            // Todo: Fail gracefully.
                             print("Error")
                         }
                         
@@ -89,6 +107,55 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             })
             task.resume()
         }
+    }
+    
+    /*
+     * Builds global bus list structure by extracting data from publicly available JSON.
+     */
+    func buildGlobalBusList(readableJson: JSON, isOld: Bool) {
+        
+        for bus in readableJson {
+            print("bus = \(bus.1)")
+            let newMarker = MKPointAnnotation()
+            let lat = Double(bus.1["lat"].string!)
+            let lon = Double(bus.1["lon"].string!)
+            newMarker.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+            let quadrant = determineMapQuadrant(lat: lat!, lon: lon!)
+            
+            if isOld { // Old data.
+                oldMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, exists: true))
+            } else {
+                newMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, exists: true))
+            }
+            
+        }
+    }
+    
+    /*
+     * Determin which quadrant on the map the current bus lies in.
+     */
+    func determineMapQuadrant(lat: Double, lon: Double) -> Int {
+        if lat > 36.9900 {
+            return lon > -122.0605 ? 1 : 2
+        } else {
+            return lon > -122.0605 ? 4 : 3
+        }
+    }
+    
+    /*
+     * Determine angle of current position.
+     */
+    func determineBusAngle(lat: Double, lon: Double) {
+        
+    }
+    
+    /*
+     * Determine whether bus is Inner/Outer Loop.
+     */
+    func determineBusDirections() {
+        // Todo: Determine which quadrant bus lines in (needed for angle accuracy).
+        
+        // Todo: Determine the angle of current position.
     }
     
     /*
