@@ -117,11 +117,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         for bus in readableJson {
             print("bus = \(bus.1)")
             let newMarker = MKPointAnnotation()
-            let lat = Double(bus.1["lat"].string!)
-            let lon = Double(bus.1["lon"].string!)
-            newMarker.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
-            let quadrant = determineMapQuadrant(lat: lat!, lon: lon!)
-            let busAngle = determineBusAngle(lat: lat!, lon: lon!, quadrant: quadrant)
+            let lat = Double(bus.1["lat"].double!)
+            let lon = Double(bus.1["lon"].double!)
+            newMarker.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+            let quadrant = determineMapQuadrant(lat: lat, lon: lon)
+            let busAngle = determineBusAngle(lat: lat, lon: lon, quadrant: quadrant)
+            print("Bus Angle: \(busAngle)")
             
             if isOld { // Old data.
                 oldMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
@@ -179,7 +180,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let p_13 = p1.distance(from: p3)
         let p_23 = p2.distance(from: p3)
         
-        return acos(((p_12*p_12) + (p_13*p_13) - (p_23*p_23))/(2 * p_12 * p_13)) + angleAggregrate
+        let rad = ((p_12*p_12) + (p_13*p_13) - (p_23*p_23))/(2 * p_12 * p_13)
+        
+        return (acos(rad)*180.0)/Double.pi + angleAggregrate
     }
     
     /*
