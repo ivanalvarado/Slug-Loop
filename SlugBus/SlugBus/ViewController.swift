@@ -25,8 +25,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var locationManager: CLLocationManager!
     var cwBusStopList  = [BusStop]()  // Clockwise Bus Stops
     var ccwBusStopList = [BusStop]()  // Counter Clockwise Bus Stops
-    var oldMainBusList = [Bus]()
-    var newMainBusList = [Bus]()
+    var oldMainBusList = [String: Bus]()
+    var newMainBusList = [String: Bus]()
     var areBusStopsShowing = true
     
     var timer = Timer()
@@ -91,10 +91,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                                 if self.newMainBusList.isEmpty {
                                     self.buildGlobalBusList(readableJson: jsonData, isOld: false)
                                     self.determineBusDirections()
+                                    self.addBusesToMapView()
                                 } else {
-                                    
+                                    self.oldMainBusList = self.newMainBusList
+                                    self.updateNewMainBusList(readableJson: jsonData)
                                 }
-                                
                             }
                             
                         } catch {
@@ -106,6 +107,43 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
             })
             task.resume()
+        }
+    }
+    
+    func updateNewMainBusList(readableJson: JSON) {
+        
+        DispatchQueue.main.async {
+            for bus in readableJson {
+                let busId = bus.1["id"].string!
+                
+                if self.newMainBusList[busId] != nil {
+                    let newLat = Double(bus.1["lat"].double!)
+                    let newLon = Double(bus.1["lon"].double!)
+                    let newCoord = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
+                    self.newMainBusList[busId]?.coordinate = newCoord
+                } else {
+                    let newMarker = MKPointAnnotation()
+                    let lat = Double(bus.1["lat"].double!)
+                    let lon = Double(bus.1["lon"].double!)
+                    newMarker.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+                    let quadrant = self.determineMapQuadrant(lat: lat, lon: lon)
+                    let busAngle = self.determineBusAngle(lat: lat, lon: lon, quadrant: quadrant)
+                    
+                    self.newMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
+                }
+            }
+        }
+        
+    }
+    
+    /*
+     * Adds an annotation for each active bus onto the MapView.
+     */
+    func addBusesToMapView() {
+        DispatchQueue.main.async {
+            for busId in self.newMainBusList.keys {
+                self.mapView.addAnnotation(self.newMainBusList[busId]!)
+            }
         }
     }
     
@@ -122,14 +160,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             newMarker.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             let quadrant = determineMapQuadrant(lat: lat, lon: lon)
             let busAngle = determineBusAngle(lat: lat, lon: lon, quadrant: quadrant)
-            print("Bus Angle: \(busAngle)")
             
             if isOld { // Old data.
-                oldMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
+                oldMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             } else {
-                newMainBusList.append(Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
+                newMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             }
-            
         }
     }
     
@@ -189,9 +225,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
      * Determine whether bus is Inner/Outer Loop.
      */
     func determineBusDirections() {
-        // Todo: Determine which quadrant bus lines in (needed for angle accuracy).
-        
-        // Todo: Determine the angle of current position.
+        for busId in newMainBusList.keys {
+            let newBusData = newMainBusList[busId]
+            if let oldBusData = oldMainBusList[busId] {
+                if (newBusData?.angle)! > oldBusData.angle {
+                    newMainBusList[busId]?.direc = "Outer"
+                } else {
+                    newMainBusList[busId]?.direc = "Inner"
+                }
+            } else {
+                // New bus, don't do anything because it's already been added to the new list.
+            }
+        }
     }
     
     /*
