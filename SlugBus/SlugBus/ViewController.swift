@@ -94,10 +94,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 if self.newMainBusList.isEmpty {
                                     self.buildGlobalBusList(readableJson: jsonData, isOld: false)
                                     self.determineBusDirections()
+                                    self.getClosestBusStopToBuses()
                                     self.addBusesToMapView()
                                 } else {
                                     self.oldMainBusList = self.newMainBusList
                                     self.updateNewMainBusList(readableJson: jsonData)
+                                    self.determineBusDirections()
+                                    self.getClosestBusStopToBuses()
                                 }
                             }
                             
@@ -123,6 +126,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     let newLat = Double(bus.1["lat"].double!)
                     let newLon = Double(bus.1["lon"].double!)
                     let newCoord = CLLocationCoordinate2D(latitude: newLat, longitude: newLon)
+                    let quadrant = self.determineMapQuadrant(lat: newLat, lon: newLon)
+                    let busAngle = self.determineBusAngle(lat: newLat, lon: newLon, quadrant: quadrant)
+                    
+                    self.newMainBusList[busId]?.quadrant = quadrant
+                    self.newMainBusList[busId]?.angle = busAngle
                     self.newMainBusList[busId]?.coordinate = newCoord
                 } else {
                     let newMarker = MKPointAnnotation()
@@ -231,12 +239,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         for busId in newMainBusList.keys {
             let newBusData = newMainBusList[busId]
             if let oldBusData = oldMainBusList[busId] {
+                print("Old Bus Angle \(oldBusData.angle)")
+                print("New Bus Angle \(String(describing: newBusData?.angle))")
                 if (newBusData?.angle)! > oldBusData.angle {
                     newMainBusList[busId]?.direc = "Outer"
-                    newMainBusList[busId]?.subtitle = "Outer"
+                    newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Outer"
                 } else {
                     newMainBusList[busId]?.direc = "Inner"
-                    newMainBusList[busId]?.subtitle = "Inner"
+                    newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Inner"
                 }
             } else {
                 // New bus, don't do anything because it's already been added to the new list.
@@ -596,6 +606,82 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         closestOuterBusStopToUser = closestOuterStop
         
         closestBusStopToUser = minDistanceInner < minDistanceOuter ? closestInnerBusStopToUser : closestOuterBusStopToUser
+    }
+    
+    /*
+     * Determines the next stop for each bus.
+     */
+    func getClosestBusStopToBuses() {
+        for bus in newMainBusList.keys {
+            let busLocationCoordinates = CLLocation(latitude: (newMainBusList[bus]?.coordinate.latitude)!, longitude: (newMainBusList[bus]?.coordinate.longitude)!)
+            let busLocationCoordinates2D = CLLocationCoordinate2D(latitude: (newMainBusList[bus]?.coordinate.latitude)!, longitude: (newMainBusList[bus]?.coordinate.longitude)!)
+            
+            if newMainBusList[bus]?.direc == "Inner" {
+                // Assign dummy values first.
+                var closestInnerStop = cwBusStopList[0]
+                let innerStopCoordinates = CLLocation(latitude: closestInnerStop.coordinate.latitude, longitude: closestInnerStop.coordinate.longitude)
+                var minDistanceInner = busLocationCoordinates.distance(from: innerStopCoordinates)
+                
+                for stop in cwBusStopList {
+                    let currentStop = CLLocation(latitude: stop.coordinate.latitude, longitude: stop.coordinate.longitude)
+                    if busLocationCoordinates.distance(from: currentStop) < minDistanceInner {
+                        minDistanceInner = busLocationCoordinates.distance(from: currentStop)
+                        closestInnerStop = stop
+                    }
+                }
+                newMainBusList[bus]?.closestInnerStop = closestInnerStop.listIndex
+                
+                // If we're at the last bus stop in our list, reset next stop to 0.
+                if closestInnerStop.listIndex == 12 {
+                    if cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].beforeStop.contains(busLocationCoordinates2D) {
+                        newMainBusList[bus]?.closestInnerStop = 12
+                    } else {
+                        newMainBusList[bus]?.closestInnerStop = 0
+                    }
+                }
+                
+                // Check if bus is before or after stop.
+                if cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].beforeStop.contains(busLocationCoordinates2D) {
+                    newMainBusList[bus]?.subtitle = "Next Stop: " + cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
+                } else if cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].afterStop.contains(busLocationCoordinates2D) {
+                    newMainBusList[bus]?.closestInnerStop = (newMainBusList[bus]?.closestInnerStop)! + 1
+                    newMainBusList[bus]?.subtitle = "Next Stop: " + cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
+                }
+            }
+            
+            if newMainBusList[bus]?.direc == "Outer" {
+                // Assign dummy values first.
+                var closestOuterStop = ccwBusStopList[0]
+                let outerStopCoordinates = CLLocation(latitude: closestOuterStop.coordinate.latitude, longitude: closestOuterStop.coordinate.longitude)
+                var minDistanceOuter = busLocationCoordinates.distance(from: outerStopCoordinates)
+                
+                for stop in ccwBusStopList {
+                    let currentStop = CLLocation(latitude: stop.coordinate.latitude, longitude: stop.coordinate.longitude)
+                    if busLocationCoordinates.distance(from: currentStop) < minDistanceOuter {
+                        minDistanceOuter = busLocationCoordinates.distance(from: currentStop)
+                        closestOuterStop = stop
+                    }
+                }
+                newMainBusList[bus]?.closestOuterStop = closestOuterStop.listIndex
+                
+                // If we're at the last bus stop in our list, reset next stop to 0.
+                if closestOuterStop.listIndex == 15 {
+                    if ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].beforeStop.contains(busLocationCoordinates2D) {
+                        newMainBusList[bus]?.closestOuterStop = 15
+                    } else {
+                        newMainBusList[bus]?.closestOuterStop = 0
+                    }
+                }
+                
+                // Check if bus is before or after stop.
+                if ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].beforeStop.contains(busLocationCoordinates2D) {
+                    newMainBusList[bus]?.subtitle = "Next Stop: " + ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
+                } else if ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].afterStop.contains(busLocationCoordinates2D) {
+                    newMainBusList[bus]?.closestOuterStop = (newMainBusList[bus]?.closestOuterStop)! + 1
+                    newMainBusList[bus]?.subtitle = "Next Stop: " + ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
+                }
+            }
+        }
     }
     
     /*
