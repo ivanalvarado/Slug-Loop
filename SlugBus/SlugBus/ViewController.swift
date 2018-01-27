@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.requestWhenInUseAuthorization()
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
     }
     
     /*
@@ -97,7 +97,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                     self.getClosestBusStopToBuses()
                                     self.addBusesToMapView()
                                 } else {
-                                    self.oldMainBusList = self.newMainBusList
+                                    
+//                                    self.oldMainBusList = self.newMainBusList
+                                    self.copyNewToOldMainBusList()
                                     self.updateNewMainBusList(readableJson: jsonData)
                                     self.determineBusDirections()
                                     self.getClosestBusStopToBuses()
@@ -116,6 +118,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    /*
+     * Copy over old bus data to Old Main Bus List so that we have a reference to old bus data.
+     * Need to copy each Bus object individually because assignment simply copies a reference to the object.
+     */
+    func copyNewToOldMainBusList() {
+        oldMainBusList.removeAll()
+        for bus in newMainBusList.keys {
+            oldMainBusList[bus] = Bus(title: (newMainBusList[bus]?.title)!, coordinate: (newMainBusList[bus]?.coordinate)!, id: (newMainBusList[bus]?.id)!, quadrant: (newMainBusList[bus]?.quadrant)!, angle: (newMainBusList[bus]?.angle)!, exists: (newMainBusList[bus]?.exists)!)
+        }
+    }
+    
+    /*
+     * Updates the New Main Bus List with newly received bus data.
+     */
     func updateNewMainBusList(readableJson: JSON) {
         
         DispatchQueue.main.async {
@@ -244,7 +260,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 if (newBusData?.angle)! > oldBusData.angle {
                     newMainBusList[busId]?.direc = "Outer"
                     newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Outer"
-                } else {
+                } else if (newBusData?.angle)! < oldBusData.angle {
                     newMainBusList[busId]?.direc = "Inner"
                     newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Inner"
                 }
