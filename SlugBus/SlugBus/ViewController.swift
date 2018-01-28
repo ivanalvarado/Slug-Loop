@@ -69,9 +69,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      * Makes a URL request in order to retrieve JSON bus data.
      */
     @objc func fetchBusData() {
-        let url = URL(string: "http://bts.ucsc.edu:8081/location/get")
         if let usableUrl = url {
-            let request = URLRequest(url: usableUrl)
+            let request = URLRequest(url: usableUrl as URL)
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let data = data {
                     if let stringData = String(data: data, encoding: String.Encoding.utf8) {
@@ -82,6 +81,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                             
                             if jsonData.count == 0 {
                                 // Todo: Alert the user no buses are active.
+                                return
                             }
                             
                             if self.oldMainBusList.isEmpty {
@@ -93,17 +93,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 
                                 if self.newMainBusList.isEmpty {
                                     self.buildGlobalBusList(readableJson: jsonData, isOld: false)
-                                    self.determineBusDirections()
-                                    self.getClosestBusStopToBuses()
                                     self.addBusesToMapView()
                                 } else {
-                                    
-//                                    self.oldMainBusList = self.newMainBusList
                                     self.copyNewToOldMainBusList()
                                     self.updateNewMainBusList(readableJson: jsonData)
-                                    self.determineBusDirections()
-                                    self.getClosestBusStopToBuses()
                                 }
+                                
+                                self.determineBusDirections()
+                                self.getClosestBusStopToBuses()
                             }
                             
                         } catch {
@@ -326,6 +323,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             break
         default:
             break
+        }
+    }
+    
+    func aggregateETA() {
+        for bus in newMainBusList.keys {
+            
+            newMainBusList[bus]?.innerETA = 0
+            if newMainBusList[bus]?.direc == "Inner" {
+                if newMainBusList[bus]?.closestInnerStop != closestInnerBusStopToUser.listIndex {
+                    var index = newMainBusList[bus]?.closestInnerStop
+                    while index != closestInnerBusStopToUser.listIndex {
+                        if index! >= cwBusStopList.count {
+                            if closestInnerBusStopToUser.listIndex == 0 {
+                                break
+                            }
+                            index = 0
+                        }
+                        newMainBusList[bus]?.innerETA += cwBusStopList[index!].etaToNextStop
+                        index = index! + 1
+                    }
+                }
+            }
+            
+            newMainBusList[bus]?.outerETA = 0
+            if newMainBusList[bus]?.direc == "Outer" {
+                if newMainBusList[bus]?.closestOuterStop != closestOuterBusStopToUser.listIndex {
+                    var index = newMainBusList[bus]?.closestOuterStop
+                    while index != closestOuterBusStopToUser.listIndex {
+                        if index! >= ccwBusStopList.count {
+                            if closestOuterBusStopToUser.listIndex == 0 {
+                                break
+                            }
+                            index = 0
+                        }
+                        newMainBusList[bus]?.outerETA += ccwBusStopList[index!].etaToNextStop
+                        index = index! + 1
+                    }
+                }
+            }
         }
     }
     
