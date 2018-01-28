@@ -19,12 +19,12 @@ class BusStop: NSObject, MKAnnotation {
     var info: String
     var customImage: Bool = true
     var listIndex: Int
-    var imageName: String!
+    var imageName: UIImage!
     var beforeStop: CLCircularRegion
     var afterStop: CLCircularRegion
     var etaToNextStop: Int
 
-    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, info: String, listIndex: Int, imageName: String!, beforeStop: CLCircularRegion, afterStop: CLCircularRegion, etaToNextStop: Int) {
+    init(title: String, subtitle: String, coordinate: CLLocationCoordinate2D, info: String, listIndex: Int, imageName: UIImage!, beforeStop: CLCircularRegion, afterStop: CLCircularRegion, etaToNextStop: Int) {
         self.title = title
         self.subtitle = subtitle
         self.coordinate = coordinate
