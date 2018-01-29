@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.requestWhenInUseAuthorization()
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 10.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
     }
     
     /*
@@ -678,7 +678,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let reuseId = busStopAnnotation.title!
             anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
             if anView == nil {
-                anView = MKMarkerAnnotationView(annotation: busStopAnnotation, reuseIdentifier: reuseId)
+                anView = MKAnnotationView(annotation: busStopAnnotation, reuseIdentifier: reuseId)
                 
                 let myView = UIView()
                 let imageView = UIImageView(image: busStopAnnotation.imageName)
@@ -693,6 +693,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
                 //            anView?.detailCalloutAccessoryView = UIImageView(image: customAnnotation.imageName)
                 anView?.detailCalloutAccessoryView = myView
+                if busStopAnnotation.subtitle == "Inner" {
+                    anView.image = UIImage(named: "InnerStop")
+                } else if busStopAnnotation.subtitle == "Outer" {
+                    anView.image = UIImage(named: "OuterStop")
+                }
+                
                 anView?.canShowCallout = true
                 anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
@@ -703,7 +709,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let reuseId = busAnnotation.id
             anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
             if anView == nil {
-                anView = MKMarkerAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
+                anView = MKAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
+                if (busAnnotation.title?.contains("LOOP"))! {
+                    anView.image = UIImage(named: "Loop")
+                } else if (busAnnotation.title?.contains("UPPER CAMPUS"))! {
+                    anView.image = UIImage(named: "UpperCampus")
+                } else if (busAnnotation.title?.contains("OUT OF SERVICE"))! {
+                    anView.image = UIImage(named: "OutOfService")
+                }
+                
                 anView?.canShowCallout = true
                 anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
