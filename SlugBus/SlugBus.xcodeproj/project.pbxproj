@@ -18,6 +18,34 @@
 		652A69D82016B039001E9DC5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 652A69D72016B039001E9DC5 /* CoreLocation.framework */; };
 		652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652A69D92016CC53001E9DC5 /* BusStop.swift */; };
 		653D7E66201E6B4A00CC4EEE /* MainEntrance.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E65201E6B4900CC4EEE /* MainEntrance.jpg */; };
+		653D7E84201E9EAE00CC4EEE /* BookstoreInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E67201E9EA600CC4EEE /* BookstoreInner.jpg */; };
+		653D7E85201E9EAE00CC4EEE /* EastRemoteOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E68201E9EA600CC4EEE /* EastRemoteOuter.jpg */; };
+		653D7E86201E9EAE00CC4EEE /* CrownCollegeOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E69201E9EA600CC4EEE /* CrownCollegeOuter.jpg */; };
+		653D7E87201E9EAE00CC4EEE /* FamilyStudentHousingOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6A201E9EA600CC4EEE /* FamilyStudentHousingOuter.jpg */; };
+		653D7E88201E9EAE00CC4EEE /* BookstoreOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6B201E9EA700CC4EEE /* BookstoreOuter.jpg */; };
+		653D7E89201E9EAE00CC4EEE /* KresgeCollegeInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6C201E9EA700CC4EEE /* KresgeCollegeInner.jpg */; };
+		653D7E8A201E9EAE00CC4EEE /* WesternDrOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6D201E9EA700CC4EEE /* WesternDrOuter.jpg */; };
+		653D7E8B201E9EAE00CC4EEE /* College9And10Outer.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6E201E9EA700CC4EEE /* College9And10Outer.jpg */; };
+		653D7E8C201E9EAE00CC4EEE /* KerrHallInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E6F201E9EA800CC4EEE /* KerrHallInner.jpg */; };
+		653D7E8D201E9EAE00CC4EEE /* BarnTheaterInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E70201E9EA800CC4EEE /* BarnTheaterInner.jpg */; };
+		653D7E8E201E9EAE00CC4EEE /* WesternDrInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E71201E9EA800CC4EEE /* WesternDrInner.jpg */; };
+		653D7E8F201E9EAE00CC4EEE /* ArboretumInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E72201E9EA800CC4EEE /* ArboretumInner.jpg */; };
+		653D7E90201E9EAE00CC4EEE /* College8PorterOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E73201E9EA900CC4EEE /* College8PorterOuter.jpg */; };
+		653D7E91201E9EAE00CC4EEE /* College9And10Inner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E74201E9EA900CC4EEE /* College9And10Inner.jpg */; };
+		653D7E92201E9EAE00CC4EEE /* LowerCampusInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E75201E9EA900CC4EEE /* LowerCampusInner.jpg */; };
+		653D7E93201E9EAE00CC4EEE /* OakesCollegeOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E76201E9EA900CC4EEE /* OakesCollegeOuter.jpg */; };
+		653D7E95201E9EAE00CC4EEE /* EastFieldHouseOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E78201E9EAA00CC4EEE /* EastFieldHouseOuter.jpg */; };
+		653D7E96201E9EAE00CC4EEE /* EastRemoteInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E79201E9EAA00CC4EEE /* EastRemoteInner.jpg */; };
+		653D7E97201E9EAE00CC4EEE /* LowerCampusOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7A201E9EAB00CC4EEE /* LowerCampusOuter.jpg */; };
+		653D7E98201E9EAE00CC4EEE /* ScienceHillInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7B201E9EAB00CC4EEE /* ScienceHillInner.jpg */; };
+		653D7E99201E9EAE00CC4EEE /* ToscaTerraceOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7C201E9EAB00CC4EEE /* ToscaTerraceOuter.jpg */; };
+		653D7E9A201E9EAE00CC4EEE /* ArboretumOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7D201E9EAC00CC4EEE /* ArboretumOuter.jpg */; };
+		653D7E9B201E9EAE00CC4EEE /* LowerQuarryRdOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7E201E9EAC00CC4EEE /* LowerQuarryRdOuter.jpg */; };
+		653D7E9C201E9EAE00CC4EEE /* College8PorterInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E7F201E9EAC00CC4EEE /* College8PorterInner.jpg */; };
+		653D7E9D201E9EAE00CC4EEE /* ScienceHillOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E80201E9EAD00CC4EEE /* ScienceHillOuter.jpg */; };
+		653D7E9E201E9EAE00CC4EEE /* OakesCollegeInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E81201E9EAD00CC4EEE /* OakesCollegeInner.jpg */; };
+		653D7E9F201E9EAE00CC4EEE /* LowerQuarryRdInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E82201E9EAD00CC4EEE /* LowerQuarryRdInner.jpg */; };
+		653D7EA0201E9EAE00CC4EEE /* KresgeCollegeOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E83201E9EAD00CC4EEE /* KresgeCollegeOuter.jpg */; };
 		65824DC92019219200D78097 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65824DC82019219200D78097 /* Bus.swift */; };
 		C16616962CD02A7EC84AF6C0 /* Pods_SlugBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */; };
 /* End PBXBuildFile section */
@@ -57,6 +85,34 @@
 		652A69D72016B039001E9DC5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		652A69D92016CC53001E9DC5 /* BusStop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusStop.swift; sourceTree = "<group>"; };
 		653D7E65201E6B4900CC4EEE /* MainEntrance.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = MainEntrance.jpg; sourceTree = "<group>"; };
+		653D7E67201E9EA600CC4EEE /* BookstoreInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BookstoreInner.jpg; sourceTree = "<group>"; };
+		653D7E68201E9EA600CC4EEE /* EastRemoteOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EastRemoteOuter.jpg; sourceTree = "<group>"; };
+		653D7E69201E9EA600CC4EEE /* CrownCollegeOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CrownCollegeOuter.jpg; sourceTree = "<group>"; };
+		653D7E6A201E9EA600CC4EEE /* FamilyStudentHousingOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = FamilyStudentHousingOuter.jpg; sourceTree = "<group>"; };
+		653D7E6B201E9EA700CC4EEE /* BookstoreOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BookstoreOuter.jpg; sourceTree = "<group>"; };
+		653D7E6C201E9EA700CC4EEE /* KresgeCollegeInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KresgeCollegeInner.jpg; sourceTree = "<group>"; };
+		653D7E6D201E9EA700CC4EEE /* WesternDrOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WesternDrOuter.jpg; sourceTree = "<group>"; };
+		653D7E6E201E9EA700CC4EEE /* College9And10Outer.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = College9And10Outer.jpg; sourceTree = "<group>"; };
+		653D7E6F201E9EA800CC4EEE /* KerrHallInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KerrHallInner.jpg; sourceTree = "<group>"; };
+		653D7E70201E9EA800CC4EEE /* BarnTheaterInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BarnTheaterInner.jpg; sourceTree = "<group>"; };
+		653D7E71201E9EA800CC4EEE /* WesternDrInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = WesternDrInner.jpg; sourceTree = "<group>"; };
+		653D7E72201E9EA800CC4EEE /* ArboretumInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArboretumInner.jpg; sourceTree = "<group>"; };
+		653D7E73201E9EA900CC4EEE /* College8PorterOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = College8PorterOuter.jpg; sourceTree = "<group>"; };
+		653D7E74201E9EA900CC4EEE /* College9And10Inner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = College9And10Inner.jpg; sourceTree = "<group>"; };
+		653D7E75201E9EA900CC4EEE /* LowerCampusInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LowerCampusInner.jpg; sourceTree = "<group>"; };
+		653D7E76201E9EA900CC4EEE /* OakesCollegeOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OakesCollegeOuter.jpg; sourceTree = "<group>"; };
+		653D7E78201E9EAA00CC4EEE /* EastFieldHouseOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EastFieldHouseOuter.jpg; sourceTree = "<group>"; };
+		653D7E79201E9EAA00CC4EEE /* EastRemoteInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = EastRemoteInner.jpg; sourceTree = "<group>"; };
+		653D7E7A201E9EAB00CC4EEE /* LowerCampusOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LowerCampusOuter.jpg; sourceTree = "<group>"; };
+		653D7E7B201E9EAB00CC4EEE /* ScienceHillInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ScienceHillInner.jpg; sourceTree = "<group>"; };
+		653D7E7C201E9EAB00CC4EEE /* ToscaTerraceOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ToscaTerraceOuter.jpg; sourceTree = "<group>"; };
+		653D7E7D201E9EAC00CC4EEE /* ArboretumOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ArboretumOuter.jpg; sourceTree = "<group>"; };
+		653D7E7E201E9EAC00CC4EEE /* LowerQuarryRdOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LowerQuarryRdOuter.jpg; sourceTree = "<group>"; };
+		653D7E7F201E9EAC00CC4EEE /* College8PorterInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = College8PorterInner.jpg; sourceTree = "<group>"; };
+		653D7E80201E9EAD00CC4EEE /* ScienceHillOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = ScienceHillOuter.jpg; sourceTree = "<group>"; };
+		653D7E81201E9EAD00CC4EEE /* OakesCollegeInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OakesCollegeInner.jpg; sourceTree = "<group>"; };
+		653D7E82201E9EAD00CC4EEE /* LowerQuarryRdInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LowerQuarryRdInner.jpg; sourceTree = "<group>"; };
+		653D7E83201E9EAD00CC4EEE /* KresgeCollegeOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KresgeCollegeOuter.jpg; sourceTree = "<group>"; };
 		65824DC82019219200D78097 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.debug.xcconfig"; sourceTree = "<group>"; };
 		92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.release.xcconfig"; sourceTree = "<group>"; };
@@ -123,7 +179,35 @@
 				652A69AF20166D78001E9DC5 /* LaunchScreen.storyboard */,
 				652A69B220166D78001E9DC5 /* Info.plist */,
 				652A69D92016CC53001E9DC5 /* BusStop.swift */,
+				653D7E7A201E9EAB00CC4EEE /* LowerCampusOuter.jpg */,
+				653D7E82201E9EAD00CC4EEE /* LowerQuarryRdInner.jpg */,
+				653D7E7E201E9EAC00CC4EEE /* LowerQuarryRdOuter.jpg */,
 				653D7E65201E6B4900CC4EEE /* MainEntrance.jpg */,
+				653D7E72201E9EA800CC4EEE /* ArboretumInner.jpg */,
+				653D7E7D201E9EAC00CC4EEE /* ArboretumOuter.jpg */,
+				653D7E70201E9EA800CC4EEE /* BarnTheaterInner.jpg */,
+				653D7E67201E9EA600CC4EEE /* BookstoreInner.jpg */,
+				653D7E6B201E9EA700CC4EEE /* BookstoreOuter.jpg */,
+				653D7E7F201E9EAC00CC4EEE /* College8PorterInner.jpg */,
+				653D7E73201E9EA900CC4EEE /* College8PorterOuter.jpg */,
+				653D7E74201E9EA900CC4EEE /* College9And10Inner.jpg */,
+				653D7E6E201E9EA700CC4EEE /* College9And10Outer.jpg */,
+				653D7E69201E9EA600CC4EEE /* CrownCollegeOuter.jpg */,
+				653D7E78201E9EAA00CC4EEE /* EastFieldHouseOuter.jpg */,
+				653D7E79201E9EAA00CC4EEE /* EastRemoteInner.jpg */,
+				653D7E68201E9EA600CC4EEE /* EastRemoteOuter.jpg */,
+				653D7E6A201E9EA600CC4EEE /* FamilyStudentHousingOuter.jpg */,
+				653D7E6F201E9EA800CC4EEE /* KerrHallInner.jpg */,
+				653D7E6C201E9EA700CC4EEE /* KresgeCollegeInner.jpg */,
+				653D7E83201E9EAD00CC4EEE /* KresgeCollegeOuter.jpg */,
+				653D7E75201E9EA900CC4EEE /* LowerCampusInner.jpg */,
+				653D7E81201E9EAD00CC4EEE /* OakesCollegeInner.jpg */,
+				653D7E76201E9EA900CC4EEE /* OakesCollegeOuter.jpg */,
+				653D7E7B201E9EAB00CC4EEE /* ScienceHillInner.jpg */,
+				653D7E80201E9EAD00CC4EEE /* ScienceHillOuter.jpg */,
+				653D7E7C201E9EAB00CC4EEE /* ToscaTerraceOuter.jpg */,
+				653D7E71201E9EA800CC4EEE /* WesternDrInner.jpg */,
+				653D7E6D201E9EA700CC4EEE /* WesternDrOuter.jpg */,
 				65824DC82019219200D78097 /* Bus.swift */,
 			);
 			path = SlugBus;
@@ -281,9 +365,37 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				653D7EA0201E9EAE00CC4EEE /* KresgeCollegeOuter.jpg in Resources */,
+				653D7E8B201E9EAE00CC4EEE /* College9And10Outer.jpg in Resources */,
+				653D7E91201E9EAE00CC4EEE /* College9And10Inner.jpg in Resources */,
+				653D7E9C201E9EAE00CC4EEE /* College8PorterInner.jpg in Resources */,
 				653D7E66201E6B4A00CC4EEE /* MainEntrance.jpg in Resources */,
+				653D7E9F201E9EAE00CC4EEE /* LowerQuarryRdInner.jpg in Resources */,
+				653D7E8C201E9EAE00CC4EEE /* KerrHallInner.jpg in Resources */,
+				653D7E87201E9EAE00CC4EEE /* FamilyStudentHousingOuter.jpg in Resources */,
+				653D7E98201E9EAE00CC4EEE /* ScienceHillInner.jpg in Resources */,
+				653D7E93201E9EAE00CC4EEE /* OakesCollegeOuter.jpg in Resources */,
+				653D7E84201E9EAE00CC4EEE /* BookstoreInner.jpg in Resources */,
+				653D7E89201E9EAE00CC4EEE /* KresgeCollegeInner.jpg in Resources */,
+				653D7E95201E9EAE00CC4EEE /* EastFieldHouseOuter.jpg in Resources */,
 				652A69B120166D78001E9DC5 /* LaunchScreen.storyboard in Resources */,
+				653D7E9D201E9EAE00CC4EEE /* ScienceHillOuter.jpg in Resources */,
 				652A69AE20166D78001E9DC5 /* Assets.xcassets in Resources */,
+				653D7E92201E9EAE00CC4EEE /* LowerCampusInner.jpg in Resources */,
+				653D7E9E201E9EAE00CC4EEE /* OakesCollegeInner.jpg in Resources */,
+				653D7E85201E9EAE00CC4EEE /* EastRemoteOuter.jpg in Resources */,
+				653D7E88201E9EAE00CC4EEE /* BookstoreOuter.jpg in Resources */,
+				653D7E86201E9EAE00CC4EEE /* CrownCollegeOuter.jpg in Resources */,
+				653D7E99201E9EAE00CC4EEE /* ToscaTerraceOuter.jpg in Resources */,
+				653D7E96201E9EAE00CC4EEE /* EastRemoteInner.jpg in Resources */,
+				653D7E9B201E9EAE00CC4EEE /* LowerQuarryRdOuter.jpg in Resources */,
+				653D7E9A201E9EAE00CC4EEE /* ArboretumOuter.jpg in Resources */,
+				653D7E8D201E9EAE00CC4EEE /* BarnTheaterInner.jpg in Resources */,
+				653D7E8E201E9EAE00CC4EEE /* WesternDrInner.jpg in Resources */,
+				653D7E8A201E9EAE00CC4EEE /* WesternDrOuter.jpg in Resources */,
+				653D7E97201E9EAE00CC4EEE /* LowerCampusOuter.jpg in Resources */,
+				653D7E8F201E9EAE00CC4EEE /* ArboretumInner.jpg in Resources */,
+				653D7E90201E9EAE00CC4EEE /* College8PorterOuter.jpg in Resources */,
 				652A69AC20166D78001E9DC5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

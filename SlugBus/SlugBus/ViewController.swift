@@ -494,22 +494,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let betweenCCW14n15 = CLCircularRegion(center: findMidpoint(point1: ccwLocation14, point2: ccwLocation15), radius: radiusOfMidpoint(point1: ccwLocation14, point2: ccwLocation15), identifier: "14 <-> 15")
         
         // Build BusStop objects.
-        ccwBusStop0 = BusStop(title: "Main Entrance", subtitle: "Outer", coordinate: ccwLocation0, info: "CounterClockwise", listIndex: 0, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW15n0, afterStop: betweenCCW0n1, etaToNextStop: 74)
-        ccwBusStop1 = BusStop(title: "Lower Campus", subtitle: "Outer", coordinate: ccwLocation1, info: "CounterClockwise", listIndex: 1, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW0n1, afterStop: betweenCCW1n2, etaToNextStop: 78)
-        ccwBusStop2 = BusStop(title: "Lower Quarry Rd.", subtitle: "Outer", coordinate: ccwLocation2, info: "CounterClockwise", listIndex: 2, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW1n2, afterStop: betweenCCW2n3, etaToNextStop: 67)
-        ccwBusStop3 = BusStop(title: "East Remote Parking Lot", subtitle: "Outer", coordinate: ccwLocation3, info: "CounterClockwise", listIndex: 3, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW2n3, afterStop: betweenCCW3n4, etaToNextStop: 40)
-        ccwBusStop4 = BusStop(title: "East Field House", subtitle: "Outer", coordinate: ccwLocation4, info: "CounterClockwise", listIndex: 4, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW3n4, afterStop: betweenCCW4n5, etaToNextStop: 87)
-        ccwBusStop5 = BusStop(title: "Bookstore", subtitle: "Outer", coordinate: ccwLocation5, info: "CounterClockwise", listIndex: 5, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW4n5, afterStop: betweenCCW5n6, etaToNextStop: 97)
-        ccwBusStop6 = BusStop(title: "Crown College", subtitle: "Outer", coordinate: ccwLocation6, info: "CounterClockwise", listIndex: 6, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW5n6, afterStop: betweenCCW6n7, etaToNextStop: 84)
-        ccwBusStop7 = BusStop(title: "College 9/10", subtitle: "Outer", coordinate: ccwLocation7, info: "CounterClockwise", listIndex: 7, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW6n7, afterStop: betweenCCW7n8, etaToNextStop: 92)
-        ccwBusStop8 = BusStop(title: "Science Hill", subtitle: "Outer", coordinate: ccwLocation8, info: "CounterClockwise", listIndex: 8, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW7n8, afterStop: betweenCCW8n9, etaToNextStop: 57)
-        ccwBusStop9 = BusStop(title: "Kresge College", subtitle: "Outer", coordinate: ccwLocation9, info: "CounterClockwise", listIndex: 9, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW8n9, afterStop: betweenCCW9n10, etaToNextStop: 161)
-        ccwBusStop10 = BusStop(title: "College 8/Porter", subtitle: "Outer", coordinate: ccwLocation10, info: "CounterClockwise", listIndex: 10, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW9n10, afterStop: betweenCCW10n11, etaToNextStop: 34)
-        ccwBusStop11 = BusStop(title: "Family Student Housing", subtitle: "Outer", coordinate: ccwLocation11, info: "CounterClockwise", listIndex: 11, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW10n11, afterStop: betweenCCW11n12, etaToNextStop: 48)
-        ccwBusStop12 = BusStop(title: "Oakes College", subtitle: "Outer", coordinate: ccwLocation12, info: "CounterClockwise", listIndex: 12, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW11n12, afterStop: betweenCCW12n13, etaToNextStop: 86)
-        ccwBusStop13 = BusStop(title: "Arboretum", subtitle: "Outer", coordinate: ccwLocation13, info: "CounterClockwise", listIndex: 13, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW12n13, afterStop: betweenCCW13n14, etaToNextStop: 41)
-        ccwBusStop14 = BusStop(title: "Tosca Terrace", subtitle: "Outer", coordinate: ccwLocation14, info: "CounterClockwise", listIndex: 14, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW13n14, afterStop: betweenCCW14n15, etaToNextStop: 14)
-        ccwBusStop15 = BusStop(title: "Western Dr.", subtitle: "Outer", coordinate: ccwLocation15, info: "CounterClockwise", listIndex: 15, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW14n15, afterStop: betweenCCW15n0, etaToNextStop: 75)
+        ccwBusStop0 = BusStop(title: "Main Entrance (Outer)", subtitle: "Outer", coordinate: ccwLocation0, info: "CounterClockwise", listIndex: 0, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCCW15n0, afterStop: betweenCCW0n1, etaToNextStop: 74)
+        ccwBusStop1 = BusStop(title: "Lower Campus (Outer)", subtitle: "Outer", coordinate: ccwLocation1, info: "CounterClockwise", listIndex: 1, imageName: UIImage(named: "LowerCampusOuter.jpg"), beforeStop: betweenCCW0n1, afterStop: betweenCCW1n2, etaToNextStop: 78)
+        ccwBusStop2 = BusStop(title: "Lower Quarry Rd. (Outer)", subtitle: "Outer", coordinate: ccwLocation2, info: "CounterClockwise", listIndex: 2, imageName: UIImage(named: "LowerQuarryRdOuter.jpg"), beforeStop: betweenCCW1n2, afterStop: betweenCCW2n3, etaToNextStop: 67)
+        ccwBusStop3 = BusStop(title: "East Remote Parking Lot (Outer)", subtitle: "Outer", coordinate: ccwLocation3, info: "CounterClockwise", listIndex: 3, imageName: UIImage(named: "EastRemoteOuter.jpg"), beforeStop: betweenCCW2n3, afterStop: betweenCCW3n4, etaToNextStop: 40)
+        ccwBusStop4 = BusStop(title: "East Field House (Outer)", subtitle: "Outer", coordinate: ccwLocation4, info: "CounterClockwise", listIndex: 4, imageName: UIImage(named: "EastFieldHouseOuter.jpg"), beforeStop: betweenCCW3n4, afterStop: betweenCCW4n5, etaToNextStop: 87)
+        ccwBusStop5 = BusStop(title: "Bookstore (Outer)", subtitle: "Outer", coordinate: ccwLocation5, info: "CounterClockwise", listIndex: 5, imageName: UIImage(named: "BookstoreOuter.jpg"), beforeStop: betweenCCW4n5, afterStop: betweenCCW5n6, etaToNextStop: 97)
+        ccwBusStop6 = BusStop(title: "Crown College (Outer)", subtitle: "Outer", coordinate: ccwLocation6, info: "CounterClockwise", listIndex: 6, imageName: UIImage(named: "CrownCollegeOuter.jpg"), beforeStop: betweenCCW5n6, afterStop: betweenCCW6n7, etaToNextStop: 84)
+        ccwBusStop7 = BusStop(title: "College 9/10 (Outer)", subtitle: "Outer", coordinate: ccwLocation7, info: "CounterClockwise", listIndex: 7, imageName: UIImage(named: "College9And10Outer.jpg"), beforeStop: betweenCCW6n7, afterStop: betweenCCW7n8, etaToNextStop: 92)
+        ccwBusStop8 = BusStop(title: "Science Hill (Outer)", subtitle: "Outer", coordinate: ccwLocation8, info: "CounterClockwise", listIndex: 8, imageName: UIImage(named: "ScienceHillOuter.jpg"), beforeStop: betweenCCW7n8, afterStop: betweenCCW8n9, etaToNextStop: 57)
+        ccwBusStop9 = BusStop(title: "Kresge College (Outer)", subtitle: "Outer", coordinate: ccwLocation9, info: "CounterClockwise", listIndex: 9, imageName: UIImage(named: "KresgeCollegeOuter.jpg"), beforeStop: betweenCCW8n9, afterStop: betweenCCW9n10, etaToNextStop: 161)
+        ccwBusStop10 = BusStop(title: "College 8/Porter (Outer)", subtitle: "Outer", coordinate: ccwLocation10, info: "CounterClockwise", listIndex: 10, imageName: UIImage(named: "College8PorterOuter.jpg"), beforeStop: betweenCCW9n10, afterStop: betweenCCW10n11, etaToNextStop: 34)
+        ccwBusStop11 = BusStop(title: "Family Student Housing (Outer)", subtitle: "Outer", coordinate: ccwLocation11, info: "CounterClockwise", listIndex: 11, imageName: UIImage(named: "FamilyStudentHousingOuter.jpg"), beforeStop: betweenCCW10n11, afterStop: betweenCCW11n12, etaToNextStop: 48)
+        ccwBusStop12 = BusStop(title: "Oakes College (Outer)", subtitle: "Outer", coordinate: ccwLocation12, info: "CounterClockwise", listIndex: 12, imageName: UIImage(named: "OakesCollegeOuter.jpg"), beforeStop: betweenCCW11n12, afterStop: betweenCCW12n13, etaToNextStop: 86)
+        ccwBusStop13 = BusStop(title: "Arboretum (Outer)", subtitle: "Outer", coordinate: ccwLocation13, info: "CounterClockwise", listIndex: 13, imageName: UIImage(named: "ArboretumOuter.jpg"), beforeStop: betweenCCW12n13, afterStop: betweenCCW13n14, etaToNextStop: 41)
+        ccwBusStop14 = BusStop(title: "Tosca Terrace (Outer)", subtitle: "Outer", coordinate: ccwLocation14, info: "CounterClockwise", listIndex: 14, imageName: UIImage(named: "ToscaTerraceOuter.jpg"), beforeStop: betweenCCW13n14, afterStop: betweenCCW14n15, etaToNextStop: 14)
+        ccwBusStop15 = BusStop(title: "Western Dr. (Outer)", subtitle: "Outer", coordinate: ccwLocation15, info: "CounterClockwise", listIndex: 15, imageName: UIImage(named: "WesternDrOuter.jpg"), beforeStop: betweenCCW14n15, afterStop: betweenCCW15n0, etaToNextStop: 75)
         
         ccwBusStopList.append(ccwBusStop0)
         ccwBusStopList.append(ccwBusStop1)
@@ -563,19 +563,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         let betweenCW11n12 = CLCircularRegion(center: findMidpoint(point1: cwLocation11, point2: cwLocation12), radius: radiusOfMidpoint(point1: cwLocation11, point2: cwLocation12), identifier: "11 <-> 12")
         
         // Build inner BusStop objects.
-        cwBusStop0 = BusStop(title: "Barn Theater", subtitle: "Inner", coordinate: cwLocation0, info: "Clockwise", listIndex: 0, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW12n0, afterStop: betweenCW0n1, etaToNextStop: 42)
-        cwBusStop1 = BusStop(title: "Western Dr.", subtitle: "Inner", coordinate: cwLocation1, info: "Clockwise", listIndex: 1, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW0n1, afterStop: betweenCW1n2, etaToNextStop: 53)
-        cwBusStop2 = BusStop(title: "Arboretum", subtitle: "Inner", coordinate: cwLocation2, info: "Clockwise", listIndex: 2, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW1n2, afterStop: betweenCW2n3, etaToNextStop: 150)
-        cwBusStop3 = BusStop(title: "Oakes College", subtitle: "Inner", coordinate: cwLocation3, info: "Clockwise", listIndex: 3, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW2n3, afterStop: betweenCW3n4, etaToNextStop: 74)
-        cwBusStop4 = BusStop(title: "College 8/Porter", subtitle: "Inner", coordinate: cwLocation4, info: "Clockwise", listIndex: 4, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW3n4, afterStop: betweenCW4n5, etaToNextStop: 98)
-        cwBusStop5 = BusStop(title: "Kerr Hall", subtitle: "Inner", coordinate: cwLocation5, info: "Clockwise", listIndex: 5, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW4n5, afterStop: betweenCW5n6, etaToNextStop: 52)
-        cwBusStop6 = BusStop(title: "Kresge College", subtitle: "Inner", coordinate: cwLocation6, info: "Clockwise", listIndex: 6, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW5n6, afterStop: betweenCW6n7, etaToNextStop: 63)
-        cwBusStop7 = BusStop(title: "Science Hill", subtitle: "Inner", coordinate: cwLocation7, info: "Clockwise", listIndex: 7, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW6n7, afterStop: betweenCW7n8, etaToNextStop: 83)
-        cwBusStop8 = BusStop(title: "College 9/10", subtitle: "Inner", coordinate: cwLocation8, info: "Clockwise", listIndex: 8, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW7n8, afterStop: betweenCW8n9, etaToNextStop: 155)
-        cwBusStop9 = BusStop(title: "Bookstore", subtitle: "Inner", coordinate: cwLocation9, info: "Clockwise", listIndex: 9, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW8n9, afterStop: betweenCW9n10, etaToNextStop: 81)
-        cwBusStop10 = BusStop(title: "East Remote Parking Lot", subtitle: "Inner", coordinate: cwLocation10, info: "Clockwise", listIndex: 10, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW9n10, afterStop: betweenCW10n11, etaToNextStop: 69)
-        cwBusStop11 = BusStop(title: "Lower Quarry Rd.", subtitle: "Inner", coordinate: cwLocation11, info: "Clockwise", listIndex: 11, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW10n11, afterStop: betweenCW11n12, etaToNextStop: 81)
-        cwBusStop12 = BusStop(title: "Lower Campus", subtitle: "Inner", coordinate: cwLocation12, info: "Clockwise", listIndex: 12, imageName: UIImage(named: "MainEntrance.jpg"), beforeStop: betweenCW11n12, afterStop: betweenCW12n0, etaToNextStop: 103)
+        cwBusStop0 = BusStop(title: "Barn Theater (Inner)", subtitle: "Inner", coordinate: cwLocation0, info: "Clockwise", listIndex: 0, imageName: UIImage(named: "BarnTheaterInner.jpg"), beforeStop: betweenCW12n0, afterStop: betweenCW0n1, etaToNextStop: 42)
+        cwBusStop1 = BusStop(title: "Western Dr. (Inner)", subtitle: "Inner", coordinate: cwLocation1, info: "Clockwise", listIndex: 1, imageName: UIImage(named: "WesternDrInner.jpg"), beforeStop: betweenCW0n1, afterStop: betweenCW1n2, etaToNextStop: 53)
+        cwBusStop2 = BusStop(title: "Arboretum (Inner)", subtitle: "Inner", coordinate: cwLocation2, info: "Clockwise", listIndex: 2, imageName: UIImage(named: "ArboretumInner.jpg"), beforeStop: betweenCW1n2, afterStop: betweenCW2n3, etaToNextStop: 150)
+        cwBusStop3 = BusStop(title: "Oakes College (Inner)", subtitle: "Inner", coordinate: cwLocation3, info: "Clockwise", listIndex: 3, imageName: UIImage(named: "OakesCollegeInner.jpg"), beforeStop: betweenCW2n3, afterStop: betweenCW3n4, etaToNextStop: 74)
+        cwBusStop4 = BusStop(title: "College 8/Porter (Inner)", subtitle: "Inner", coordinate: cwLocation4, info: "Clockwise", listIndex: 4, imageName: UIImage(named: "College8PorterInner.jpg"), beforeStop: betweenCW3n4, afterStop: betweenCW4n5, etaToNextStop: 98)
+        cwBusStop5 = BusStop(title: "Kerr Hall (Inner)", subtitle: "Inner", coordinate: cwLocation5, info: "Clockwise", listIndex: 5, imageName: UIImage(named: "KerrHallInner.jpg"), beforeStop: betweenCW4n5, afterStop: betweenCW5n6, etaToNextStop: 52)
+        cwBusStop6 = BusStop(title: "Kresge College (Inner)", subtitle: "Inner", coordinate: cwLocation6, info: "Clockwise", listIndex: 6, imageName: UIImage(named: "KresgeCollegeInner.jpg"), beforeStop: betweenCW5n6, afterStop: betweenCW6n7, etaToNextStop: 63)
+        cwBusStop7 = BusStop(title: "Science Hill (Inner)", subtitle: "Inner", coordinate: cwLocation7, info: "Clockwise", listIndex: 7, imageName: UIImage(named: "ScienceHillInner.jpg"), beforeStop: betweenCW6n7, afterStop: betweenCW7n8, etaToNextStop: 83)
+        cwBusStop8 = BusStop(title: "College 9/10 (Inner)", subtitle: "Inner", coordinate: cwLocation8, info: "Clockwise", listIndex: 8, imageName: UIImage(named: "College9And10Inner.jpg"), beforeStop: betweenCW7n8, afterStop: betweenCW8n9, etaToNextStop: 155)
+        cwBusStop9 = BusStop(title: "Bookstore (Inner)", subtitle: "Inner", coordinate: cwLocation9, info: "Clockwise", listIndex: 9, imageName: UIImage(named: "BookstoreInner.jpg"), beforeStop: betweenCW8n9, afterStop: betweenCW9n10, etaToNextStop: 81)
+        cwBusStop10 = BusStop(title: "East Remote Parking Lot (Inner)", subtitle: "Inner", coordinate: cwLocation10, info: "Clockwise", listIndex: 10, imageName: UIImage(named: "EastRemoteInner.jpg"), beforeStop: betweenCW9n10, afterStop: betweenCW10n11, etaToNextStop: 69)
+        cwBusStop11 = BusStop(title: "Lower Quarry Rd. (Inner)", subtitle: "Inner", coordinate: cwLocation11, info: "Clockwise", listIndex: 11, imageName: UIImage(named: "LowerQuarryRdInner.jpg"), beforeStop: betweenCW10n11, afterStop: betweenCW11n12, etaToNextStop: 81)
+        cwBusStop12 = BusStop(title: "Lower Campus (Inner)", subtitle: "Inner", coordinate: cwLocation12, info: "Clockwise", listIndex: 12, imageName: UIImage(named: "LowerCampusInner.jpg"), beforeStop: betweenCW11n12, afterStop: betweenCW12n0, etaToNextStop: 103)
         
         cwBusStopList.append(cwBusStop0)
         cwBusStopList.append(cwBusStop1)
@@ -671,29 +671,45 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             return nil
         }
         
-        let reuseId = "marker"
-        var anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
-        let customAnnotation = annotation as! BusStop
-        if anView == nil {
-            anView = MKMarkerAnnotationView(annotation: customAnnotation, reuseIdentifier: reuseId)
+        var anView: MKAnnotationView!
+        
+        if annotation is BusStop {
+            let busStopAnnotation = annotation as! BusStop
+            let reuseId = busStopAnnotation.title!
+            anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            if anView == nil {
+                anView = MKMarkerAnnotationView(annotation: busStopAnnotation, reuseIdentifier: reuseId)
+                
+                let myView = UIView()
+                let imageView = UIImageView(image: busStopAnnotation.imageName)
+                imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 150)
+                myView.addSubview(imageView)
+                
+                let widthConstraint = NSLayoutConstraint(item: myView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+                myView.addConstraint(widthConstraint)
+                
+                let heightConstraint = NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
+                myView.addConstraint(heightConstraint)
+                
+                //            anView?.detailCalloutAccessoryView = UIImageView(image: customAnnotation.imageName)
+                anView?.detailCalloutAccessoryView = myView
+                anView?.canShowCallout = true
+                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            } else {
+                anView?.annotation = busStopAnnotation
+            }
+        } else if annotation is Bus {
+            let busAnnotation = annotation as! Bus
+            let reuseId = busAnnotation.id
+            anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            if anView == nil {
+                anView = MKMarkerAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
+                anView?.canShowCallout = true
+                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+            } else {
+                anView?.annotation = busAnnotation
+            }
             
-            let myView = UIView()
-            let imageView = UIImageView(image: customAnnotation.imageName)
-            imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 150)
-            myView.addSubview(imageView)
-            
-            let widthConstraint = NSLayoutConstraint(item: myView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-            myView.addConstraint(widthConstraint)
-            
-            let heightConstraint = NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
-            myView.addConstraint(heightConstraint)
-            
-//            anView?.detailCalloutAccessoryView = UIImageView(image: customAnnotation.imageName)
-            anView?.detailCalloutAccessoryView = myView
-            anView?.canShowCallout = true
-            anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
-        } else {
-            anView?.annotation = customAnnotation
         }
         
         return anView
