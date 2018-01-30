@@ -62,7 +62,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.requestWhenInUseAuthorization()
         }
         
-        timer = Timer.scheduledTimer(timeInterval: 5.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
     }
     
     /*
@@ -718,6 +718,25 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     anView.image = UIImage(named: "OutOfService")
                 }
                 
+                let customView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+                let directionLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 300, height: 20))
+                directionLabel.text = "Direction: " + busAnnotation.direc
+                let nextStopLabel = UILabel(frame: CGRect(x: 0, y: 25, width: 300, height: 20))
+                nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
+                let etaLabel = UILabel(frame: CGRect(x: 0, y: 45, width: 300, height: 20))
+                etaLabel.text = "ETA: " + String(busAnnotation.direc == "Inner" ? busAnnotation.innerETA : busAnnotation.outerETA)
+                customView.addSubview(directionLabel)
+                customView.addSubview(nextStopLabel)
+                customView.addSubview(etaLabel)
+                
+                let widthConstraint = NSLayoutConstraint(item: customView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+                customView.addConstraint(widthConstraint)
+                
+                let heightConstraint = NSLayoutConstraint(item: customView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
+                customView.addConstraint(heightConstraint)
+                
+                anView?.detailCalloutAccessoryView = customView
+                
                 anView?.canShowCallout = true
                 anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
@@ -800,10 +819,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
                 // Check if bus is before or after stop.
                 if cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].beforeStop.contains(busLocationCoordinates2D) {
-                    newMainBusList[bus]?.subtitle = "Next Stop: " + cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
+                    newMainBusList[bus]?.subtitle = cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
                 } else if cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].afterStop.contains(busLocationCoordinates2D) {
                     newMainBusList[bus]?.closestInnerStop = (newMainBusList[bus]?.closestInnerStop)! + 1
-                    newMainBusList[bus]?.subtitle = "Next Stop: " + cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
+                    newMainBusList[bus]?.subtitle = cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!].title!
                 }
             }
             
@@ -833,10 +852,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 
                 // Check if bus is before or after stop.
                 if ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].beforeStop.contains(busLocationCoordinates2D) {
-                    newMainBusList[bus]?.subtitle = "Next Stop: " + ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
+                    newMainBusList[bus]?.subtitle = ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
                 } else if ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].afterStop.contains(busLocationCoordinates2D) {
                     newMainBusList[bus]?.closestOuterStop = (newMainBusList[bus]?.closestOuterStop)! + 1
-                    newMainBusList[bus]?.subtitle = "Next Stop: " + ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
+                    newMainBusList[bus]?.subtitle = ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!].title!
                 }
             }
         }
