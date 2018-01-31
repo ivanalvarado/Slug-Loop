@@ -23,6 +23,7 @@ class Bus: NSObject, MKAnnotation {
     var imageName: String = ""
     var innerETA = 0
     var outerETA = 0
+    var actualETA: String = "Calculating"
     
     init(title: String, coordinate: CLLocationCoordinate2D, id: String, quadrant: Int, angle: Double, exists: Bool) {
         self.title = title

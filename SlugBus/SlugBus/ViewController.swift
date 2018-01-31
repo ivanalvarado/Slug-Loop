@@ -102,6 +102,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 self.determineBusDirections()
                                 self.getClosestBusStopToBuses()
                                 self.calculateEtaOfBuses()
+                                self.convertEtaToMinutes()
                                 self.printBusInfo()
                                 self.updateAnnotationViews()
                             }
@@ -436,6 +437,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 calculateEtaOfBusToClosestStop(source: newMainBusList[bus]!, destination: ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!]) { (eta: Int) -> Void in
                     self.newMainBusList[bus]?.outerETA += eta
                 }
+            }
+        }
+    }
+    
+    func convertEtaToMinutes () {
+        for bus in newMainBusList.keys {
+            if newMainBusList[bus]?.direc == "Inner" {
+                let etaAsWhole = newMainBusList[bus]?.innerETA
+                let etaInMinutes = etaAsWhole! / 60
+                let etaInSeconds = etaAsWhole! % 60
+                
+                newMainBusList[bus]?.actualETA = String(etaInMinutes) + " Minutes, " + String(etaInSeconds) + " Seconds"
+            }
+            
+            if newMainBusList[bus]?.direc == "Outer" {
+                let etaAsWhole = newMainBusList[bus]?.outerETA
+                let etaInMinutes = etaAsWhole! / 60
+                let etaInSeconds = etaAsWhole! % 60
+                
+                newMainBusList[bus]?.actualETA = String(etaInMinutes) + " Minutes, " + String(etaInSeconds) + " Seconds"
             }
         }
     }

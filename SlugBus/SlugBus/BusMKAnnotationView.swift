@@ -54,7 +54,7 @@ class BusMKAnnotationView: MKAnnotationView {
         
         directionLabel.text = "Direction: " + busAnnotation.direc
         nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
-        etaLabel.text = "ETA: " + String(busAnnotation.direc == "Inner" ? busAnnotation.innerETA : busAnnotation.outerETA)
+        etaLabel.text = "ETA: " + busAnnotation.actualETA
         
         busInfoView.addSubview(directionLabel)
         busInfoView.addSubview(nextStopLabel)
