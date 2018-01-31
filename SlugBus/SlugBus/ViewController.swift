@@ -290,10 +290,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 print("New Bus Angle \(String(describing: newBusData?.angle))")
                 if (newBusData?.angle)! > oldBusData.angle {
                     newMainBusList[busId]?.direc = "Outer"
-                    newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Outer"
                 } else if (newBusData?.angle)! < oldBusData.angle {
                     newMainBusList[busId]?.direc = "Inner"
-                    newMainBusList[busId]?.title = (newMainBusList[busId]?.title)! + " Inner"
                 }
             } else {
                 // New bus, don't do anything because it's already been added to the new list.

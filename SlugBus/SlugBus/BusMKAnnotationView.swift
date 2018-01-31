@@ -31,12 +31,12 @@ class BusMKAnnotationView: MKAnnotationView {
      * Types: Loop, Upper Campus, Out of Service.
      */
     func determineBusIcon() {
-        if (busAnnotation.title?.contains("LOOP"))! {
-            self.image = UIImage(named: "Loop")
+        if (busAnnotation.title?.contains("OUT OF SERVICE"))! {
+            self.image = UIImage(named: "OutOfService")
         } else if (busAnnotation.title?.contains("UPPER CAMPUS"))! {
             self.image = UIImage(named: "UpperCampus")
-        } else if (busAnnotation.title?.contains("OUT OF SERVICE"))! {
-            self.image = UIImage(named: "OutOfService")
+        } else if (busAnnotation.title?.contains("LOOP"))! {
+            self.image = UIImage(named: "Loop")
         }
     }
     
@@ -61,7 +61,7 @@ class BusMKAnnotationView: MKAnnotationView {
         busInfoView.addSubview(etaLabel)
         
         let widthConstraint = NSLayoutConstraint(item: busInfoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-        let heightConstraint = NSLayoutConstraint(item: busInfoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
+        let heightConstraint = NSLayoutConstraint(item: busInfoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60)
         
         busInfoView.addConstraint(widthConstraint)
         busInfoView.addConstraint(heightConstraint)
