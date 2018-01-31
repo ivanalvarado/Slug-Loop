@@ -103,6 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 self.getClosestBusStopToBuses()
                                 self.calculateEtaOfBuses()
                                 self.printBusInfo()
+                                self.updateAnnotationViews()
                             }
                             
                         } catch {
@@ -175,6 +176,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                     
                     self.newMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
                 }
+            }
+        }
+    }
+    
+    func updateAnnotationViews() {
+        DispatchQueue.main.async {
+            for bus in self.newMainBusList.keys {
+                let busAnnotationView: BusMKAnnotationView = self.mapView.view(for: self.newMainBusList[bus]!)! as! BusMKAnnotationView
+                busAnnotationView.reloadData()
             }
         }
     }
@@ -707,42 +717,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         } else if annotation is Bus {
             let busAnnotation = annotation as! Bus
             let reuseId = busAnnotation.id
-            anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
+            anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? BusMKAnnotationView
             if anView == nil {
-                anView = MKAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
-                if (busAnnotation.title?.contains("LOOP"))! {
-                    anView.image = UIImage(named: "Loop")
-                } else if (busAnnotation.title?.contains("UPPER CAMPUS"))! {
-                    anView.image = UIImage(named: "UpperCampus")
-                } else if (busAnnotation.title?.contains("OUT OF SERVICE"))! {
-                    anView.image = UIImage(named: "OutOfService")
-                }
-                
-                let customView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
-                let directionLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 300, height: 20))
-                directionLabel.text = "Direction: " + busAnnotation.direc
-                let nextStopLabel = UILabel(frame: CGRect(x: 0, y: 25, width: 300, height: 20))
-                nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
-                let etaLabel = UILabel(frame: CGRect(x: 0, y: 45, width: 300, height: 20))
-                etaLabel.text = "ETA: " + String(busAnnotation.direc == "Inner" ? busAnnotation.innerETA : busAnnotation.outerETA)
-                customView.addSubview(directionLabel)
-                customView.addSubview(nextStopLabel)
-                customView.addSubview(etaLabel)
-                
-                let widthConstraint = NSLayoutConstraint(item: customView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-                customView.addConstraint(widthConstraint)
-                
-                let heightConstraint = NSLayoutConstraint(item: customView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
-                customView.addConstraint(heightConstraint)
-                
-                anView?.detailCalloutAccessoryView = customView
-                
+                anView = BusMKAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
                 anView?.canShowCallout = true
                 anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
                 anView?.annotation = busAnnotation
             }
-            
         }
         
         return anView
