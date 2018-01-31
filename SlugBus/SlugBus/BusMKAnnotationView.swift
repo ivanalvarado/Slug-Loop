@@ -45,24 +45,28 @@ class BusMKAnnotationView: MKAnnotationView {
      * Info: Bus Direction, Next Stop, and ETA.
      */
     func updateBusInfo() {
-        let customView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        
+        let busInfoView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
+        
         let directionLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 300, height: 20))
-        directionLabel.text = "Direction: " + busAnnotation.direc
         let nextStopLabel = UILabel(frame: CGRect(x: 0, y: 25, width: 300, height: 20))
-        nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
         let etaLabel = UILabel(frame: CGRect(x: 0, y: 45, width: 300, height: 20))
+        
+        directionLabel.text = "Direction: " + busAnnotation.direc
+        nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
         etaLabel.text = "ETA: " + String(busAnnotation.direc == "Inner" ? busAnnotation.innerETA : busAnnotation.outerETA)
-        customView.addSubview(directionLabel)
-        customView.addSubview(nextStopLabel)
-        customView.addSubview(etaLabel)
         
-        let widthConstraint = NSLayoutConstraint(item: customView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-        customView.addConstraint(widthConstraint)
+        busInfoView.addSubview(directionLabel)
+        busInfoView.addSubview(nextStopLabel)
+        busInfoView.addSubview(etaLabel)
         
-        let heightConstraint = NSLayoutConstraint(item: customView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
-        customView.addConstraint(heightConstraint)
+        let widthConstraint = NSLayoutConstraint(item: busInfoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+        let heightConstraint = NSLayoutConstraint(item: busInfoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
         
-        self.detailCalloutAccessoryView = customView
+        busInfoView.addConstraint(widthConstraint)
+        busInfoView.addConstraint(heightConstraint)
+        
+        self.detailCalloutAccessoryView = busInfoView
     }
     
     func reloadData() {

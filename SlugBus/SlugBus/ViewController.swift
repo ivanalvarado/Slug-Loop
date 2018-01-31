@@ -180,11 +180,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
     }
     
+    /*
+     * Updates the Bus annotation views' info: Direction, Next Stop, ETA.
+     */
     func updateAnnotationViews() {
         DispatchQueue.main.async {
             for bus in self.newMainBusList.keys {
-                let busAnnotationView: BusMKAnnotationView = self.mapView.view(for: self.newMainBusList[bus]!)! as! BusMKAnnotationView
-                busAnnotationView.reloadData()
+                if self.mapView.view(for: self.newMainBusList[bus]!) != nil {
+                    let busAnnotationView: BusMKAnnotationView = self.mapView.view(for: self.newMainBusList[bus]!)! as! BusMKAnnotationView
+                    busAnnotationView.reloadData()
+                }
             }
         }
     }
@@ -688,21 +693,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let reuseId = busStopAnnotation.title!
             anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId)
             if anView == nil {
+                
                 anView = MKAnnotationView(annotation: busStopAnnotation, reuseIdentifier: reuseId)
                 
-                let myView = UIView()
-                let imageView = UIImageView(image: busStopAnnotation.imageName)
-                imageView.frame = CGRect(x: 0, y: 0, width: 300, height: 150)
-                myView.addSubview(imageView)
+                let busStopView = UIView()
                 
-                let widthConstraint = NSLayoutConstraint(item: myView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
-                myView.addConstraint(widthConstraint)
+                let busStopImageView = UIImageView(image: busStopAnnotation.imageName)
+                busStopImageView.frame = CGRect(x: 0, y: 0, width: 300, height: 150)
+                busStopView.addSubview(busStopImageView)
                 
-                let heightConstraint = NSLayoutConstraint(item: myView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
-                myView.addConstraint(heightConstraint)
+                let widthConstraint = NSLayoutConstraint(item: busStopView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+                let heightConstraint = NSLayoutConstraint(item: busStopView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 150)
                 
-                //            anView?.detailCalloutAccessoryView = UIImageView(image: customAnnotation.imageName)
-                anView?.detailCalloutAccessoryView = myView
+                busStopView.addConstraint(widthConstraint)
+                busStopView.addConstraint(heightConstraint)
+                
+                anView?.detailCalloutAccessoryView = busStopView
+                
                 if busStopAnnotation.subtitle == "Inner" {
                     anView.image = UIImage(named: "InnerStop")
                 } else if busStopAnnotation.subtitle == "Outer" {
@@ -714,10 +721,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             } else {
                 anView?.annotation = busStopAnnotation
             }
+            
         } else if annotation is Bus {
+            
             let busAnnotation = annotation as! Bus
             let reuseId = busAnnotation.id
             anView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? BusMKAnnotationView
+            
             if anView == nil {
                 anView = BusMKAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
                 anView?.canShowCallout = true
