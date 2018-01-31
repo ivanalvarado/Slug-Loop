@@ -32,11 +32,11 @@ class BusMKAnnotationView: MKAnnotationView {
      */
     func determineBusIcon() {
         if (busAnnotation.title?.contains("OUT OF SERVICE"))! {
-            self.image = UIImage(named: "OutOfService")
+            self.image = UIImage(named: "OutOfService-2")
         } else if (busAnnotation.title?.contains("UPPER CAMPUS"))! {
-            self.image = UIImage(named: "UpperCampus")
+            self.image = UIImage(named: "UpperCampus-2")
         } else if (busAnnotation.title?.contains("LOOP"))! {
-            self.image = UIImage(named: "Loop")
+            self.image = UIImage(named: "Loop-2")
         }
     }
     

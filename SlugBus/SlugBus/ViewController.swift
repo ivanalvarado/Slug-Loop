@@ -730,9 +730,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.detailCalloutAccessoryView = busStopView
                 
                 if busStopAnnotation.subtitle == "Inner" {
-                    anView.image = UIImage(named: "InnerStop")
+                    anView.image = UIImage(named: "InnerStop-2")
                 } else if busStopAnnotation.subtitle == "Outer" {
-                    anView.image = UIImage(named: "OuterStop")
+                    anView.image = UIImage(named: "OuterStop-2")
                 }
                 
                 anView?.canShowCallout = true
