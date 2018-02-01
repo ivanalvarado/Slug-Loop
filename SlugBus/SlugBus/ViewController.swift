@@ -50,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var areBusStopsShowing = true
     var busStopAlert: UIAlertController!
     
-    var timer = Timer()
+    var timer: Timer?
     
     // Bus Stops
     var ccwBusStop0, ccwBusStop1, ccwBusStop2, ccwBusStop3, ccwBusStop4, ccwBusStop5, ccwBusStop6, ccwBusStop7, ccwBusStop8, ccwBusStop9, ccwBusStop10, ccwBusStop11, ccwBusStop12, ccwBusStop13, ccwBusStop14, ccwBusStop15, cwBusStop0, cwBusStop1, cwBusStop2, cwBusStop3, cwBusStop4, cwBusStop5, cwBusStop6, cwBusStop7, cwBusStop8, cwBusStop9, cwBusStop10, cwBusStop11, cwBusStop12: BusStop!
@@ -685,7 +685,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
             print("Main Entrance (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Barn Theater (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
@@ -693,7 +694,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
             print("Barn Theater (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
@@ -701,7 +703,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
             print("Lower Campus (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
@@ -709,7 +712,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
             print("Lower Campus (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
@@ -717,7 +721,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
             print("Lower Campus (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
@@ -725,7 +730,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
             print("Lower Quarry Rd. (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
@@ -733,7 +739,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
             print("East Remote Parking Lot (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
@@ -741,7 +748,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
             print("East Remote Parking Lot (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Field House (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
@@ -749,7 +757,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
             print("East Field House (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Bookstore (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
@@ -757,7 +766,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
             print("Bookstore (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Bookstore (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
@@ -765,7 +775,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
             print("Bookstore (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Crown College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
@@ -773,7 +784,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
             print("Crown College (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
@@ -781,7 +793,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
             print("College 9/10 (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
@@ -789,7 +802,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
             print("College 9/10 (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Science Hill (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
@@ -797,7 +811,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
             print("Science Hill (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Science Hill (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
@@ -805,7 +820,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
             print("Science Hill (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kresge College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
@@ -813,7 +829,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
             print("Kresge College (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kresge College (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
@@ -821,7 +838,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
             print("Kresge College (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kerr Hall (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
@@ -829,7 +847,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
             print("Kerr Hall (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
@@ -837,7 +856,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
             print("College 8/Porter (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
@@ -845,7 +865,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
             print("College 8/Porter (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Family Student Housing (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
@@ -853,7 +874,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
             print("Family Student Housing (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Oakes College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
@@ -861,7 +883,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
             print("Oakes College (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Oakes College (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
@@ -869,7 +892,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
             print("Oakes College (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Arboretum (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
@@ -877,7 +901,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
             print("Arboretum (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Arboretum (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
@@ -885,7 +910,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
             print("Arboretum (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Tosca Terrace (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
@@ -893,7 +919,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
             print("Tosca Terrace (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
@@ -901,7 +928,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
             print("Western Dr. (Outer)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
         busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
@@ -909,7 +937,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
             print("Western Dr. (Inner)")
             self.closestBusStopLabel.text = self.closestBusStopToUser.title
-            self.startTimer()
+            
+            if self.timer == nil { self.startTimer() }
         }))
     }
     
