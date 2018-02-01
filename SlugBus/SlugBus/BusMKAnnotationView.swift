@@ -69,11 +69,14 @@ class BusMKAnnotationView: MKAnnotationView {
         nextStop.text = (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
         eta.text = busAnnotation.actualETA
         
+        direction.font = UIFont.boldSystemFont(ofSize: 17.0)
+        nextStop.font = UIFont.boldSystemFont(ofSize: 17.0)
+        eta.font = UIFont.boldSystemFont(ofSize: 17.0)
+        eta.textColor = UIColor(red: CGFloat(0/255.0), green: CGFloat(100/255.0), blue: CGFloat(0/255.0), alpha: 1.0)
+        
         direction.sizeToFit()
         nextStop.sizeToFit()
         eta.sizeToFit()
-        
-        let nsLayoutWidth = nextStopLabel.intrinsicContentSize.width + nextStop.intrinsicContentSize.width
         
         busInfoView.addSubview(directionLabel)
         busInfoView.addSubview(direction)
@@ -81,6 +84,10 @@ class BusMKAnnotationView: MKAnnotationView {
         busInfoView.addSubview(nextStop)
         busInfoView.addSubview(etaLabel)
         busInfoView.addSubview(eta)
+        
+        let nextStopWidth = nextStopLabel.intrinsicContentSize.width + nextStop.intrinsicContentSize.width
+        let etaWidth = etaLabel.intrinsicContentSize.width + eta.intrinsicContentSize.width
+        let nsLayoutWidth = nextStopWidth > etaWidth ? nextStopWidth : etaWidth
         
         let widthConstraint = NSLayoutConstraint(item: busInfoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: nsLayoutWidth)
         let heightConstraint = NSLayoutConstraint(item: busInfoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60)
