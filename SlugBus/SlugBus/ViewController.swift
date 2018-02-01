@@ -57,12 +57,120 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         buildBusStopLists()
         displayBusStops()
         
+        
+        
+    }
+    
+    /*
+     * Start executing bus code here because the view has now loaded.
+     */
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let alert = UIAlertController(title: "Bus Stop", message: "Choose bus stop you want information for.", preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title:"Main Entrance (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Barn Theater (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Lower Campus (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Lower Campus (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"East Remote Parking Lot (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"East Remote Parking Lot (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"East Field House (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Bookstore (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Bookstore (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Crown College (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"College 9/10 (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"College 9/10 (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Science Hill (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Science Hill (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Kresge College (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Kresge College (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Kerr Hall (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"College 8/Porter (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"College 8/Porter (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Family Student Housing (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Oakes College (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Oakes College (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Arboretum (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Arboretum (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Tosca Terrace (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Western Dr. (Outer)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        alert.addAction(UIAlertAction(title:"Western Dr. (Inner)", style: .default, handler: { (action) in
+            print("Option 1 selected")
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+
+        
         // If we don't have access to the user's current location, request it
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse) {
             locationManager.requestWhenInUseAuthorization()
         }
         
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
+        
+//        let alertController = UIAlertController(title: "Foo", message: "Bar", preferredStyle: .alert)
+//
+//        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+//        present(alertController, animated: true, completion: nil)
     }
     
     /*
