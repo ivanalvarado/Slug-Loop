@@ -38,6 +38,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var toggleBusStopsButton: UIButton!
     @IBOutlet weak var recenterButton: UIButton!
     @IBOutlet weak var closestBusStopView: UIView!
+    @IBOutlet weak var closestBusStopLabel: UILabel!
     
     var locationManager: CLLocationManager!
     var userLocation: CLLocation!
@@ -88,7 +89,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse) {
             locationManager.requestWhenInUseAuthorization()
         }
-        
+    }
+    
+    /*
+     * Kicks off timer that executes fetchBusData() every three seconds.
+     */
+    func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
     }
     
@@ -112,6 +118,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             locationManager.startUpdatingLocation()
             userLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
             getClosestBusStopsToUser()
+            startTimer()
             print("Closest Bus Stop: \(String(describing: closestBusStopToUser.title))")
             break
         default:
@@ -665,174 +672,232 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
             print("Main Entrance (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Barn Theater (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
             print("Barn Theater (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
             print("Lower Campus (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
             print("Lower Campus (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
             print("Lower Campus (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
             print("Lower Quarry Rd. (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
             print("East Remote Parking Lot (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
             print("East Remote Parking Lot (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"East Field House (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
             print("East Field House (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Bookstore (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
             print("Bookstore (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Bookstore (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
             print("Bookstore (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Crown College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
             print("Crown College (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
             print("College 9/10 (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
             print("College 9/10 (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Science Hill (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
             print("Science Hill (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Science Hill (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
             print("Science Hill (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kresge College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
             print("Kresge College (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kresge College (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
             print("Kresge College (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Kerr Hall (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
             print("Kerr Hall (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
             print("College 8/Porter (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
             print("College 8/Porter (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Family Student Housing (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
             print("Family Student Housing (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Oakes College (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
             print("Oakes College (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Oakes College (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
             print("Oakes College (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Arboretum (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
             print("Arboretum (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Arboretum (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
             print("Arboretum (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Tosca Terrace (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
             print("Tosca Terrace (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
             self.closestBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
             print("Western Dr. (Outer)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
         busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Inner)", style: .default, handler: { (action) in
             self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
             self.closestBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
             print("Western Dr. (Inner)")
+            self.closestBusStopLabel.text = self.closestBusStopToUser.title
+            self.startTimer()
         }))
     }
     
@@ -1004,6 +1069,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         closestOuterBusStopToUser = closestOuterStop
         
         closestBusStopToUser = minDistanceInner < minDistanceOuter ? closestInnerBusStopToUser : closestOuterBusStopToUser
+        closestBusStopLabel.text = closestBusStopToUser.title
     }
     
     /*
