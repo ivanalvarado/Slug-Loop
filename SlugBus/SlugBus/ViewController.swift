@@ -66,6 +66,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         updateButtonUi()
         
+        // Add a gesture recognizer to the Bus Stop UIView in case user wants to change closest bus stop.
+        let closestBusStopTap = UITapGestureRecognizer(target: self, action: #selector(ViewController.displayBusStopList))
+        closestBusStopView.isUserInteractionEnabled = true
+        closestBusStopView.addGestureRecognizer(closestBusStopTap)
+        
         // Center map on UCSC campus
         mapView.setRegion(MKCoordinateRegionMake(UCSC_CAMPUS_LOCATION, DISTANCE_SPAN), animated: true)
         
@@ -124,6 +129,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         default:
             break
         }
+    }
+    
+    /*
+     * Displays Bus Stop Alert list.
+     */
+    @objc func displayBusStopList() {
+        self.present(busStopAlert, animated: true, completion: nil)
     }
     
     /*
