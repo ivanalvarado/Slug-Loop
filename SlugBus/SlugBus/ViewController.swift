@@ -15,6 +15,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     let UCSC_CAMPUS_LOCATION: CLLocationCoordinate2D = CLLocationCoordinate2DMake(36.9900, -122.0605)
     let DISTANCE_SPAN: MKCoordinateSpan = MKCoordinateSpanMake(0.03, 0.03)
+    let MAIN_ENTRANCE_OUTER = 0; let BARN_THEATER_INNER = 0
+    let LOWER_CAMPUS_OUTER = 1; let WESTERN_DR_INNER = 1
+    let LOWER_QUARRY_RD_OUTER = 2; let ARBORETUM_INNER = 2
+    let EAST_REMOTE_OUTER = 3; let OAKES_COLLEGE_INNER = 3
+    let EAST_FIELD_OUTER = 4; let COLLEGE_8_PORTER_INNER = 4
+    let BOOKSTORE_OUTER = 5; let KERR_HALL_INNER = 5
+    let CROWN_COLLEGE_OUTER = 6; let KRESGE_COLLEGE_INNER = 6
+    let COLLEGE_9_10_OUTER = 7; let SCIENCE_HILL_INNER = 7
+    let SCIENCE_HILL_OUTER = 8; let COLLEGE_9_10_INNER = 8
+    let KRESGE_COLLEGE_OUTER = 9; let BOOKSTORE_INNER = 9
+    let COLLEGE_8_PORTER_OUTER = 10; let EAST_REMOTE_INNER = 10
+    let FAMILY_STUDENT_HOUSING_OUTER = 11; let LOWER_QUARRY_RD_INNER = 11
+    let OAKES_COLLEGE_OUTER = 12; let LOWER_CAMPUS_INNER = 12
+    let ARBORETUM_OUTER = 13
+    let TOSCA_TERRACE_OUTER = 14
+    let WESTERN_DR_OUTER = 15
+    
     let url = NSURL(string: "http://bts.ucsc.edu:8081/location/get")
 
     @IBOutlet weak var mapView: MKMapView!
@@ -30,6 +47,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     var newMainBusList = [String: Bus]()
     var closestInnerBusStopToUser, closestOuterBusStopToUser, closestBusStopToUser: BusStop!
     var areBusStopsShowing = true
+    var busStopAlert: UIAlertController!
     
     var timer = Timer()
     
@@ -56,9 +74,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         buildBusStopLists()
         displayBusStops()
-        
-        
-        
     }
     
     /*
@@ -67,110 +82,41 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let alert = UIAlertController(title: "Bus Stop", message: "Choose bus stop you want information for.", preferredStyle: .actionSheet)
-        
-        alert.addAction(UIAlertAction(title:"Main Entrance (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Barn Theater (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Lower Campus (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Lower Campus (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"East Remote Parking Lot (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"East Remote Parking Lot (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"East Field House (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Bookstore (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Bookstore (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Crown College (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"College 9/10 (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"College 9/10 (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Science Hill (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Science Hill (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Kresge College (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Kresge College (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Kerr Hall (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"College 8/Porter (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"College 8/Porter (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Family Student Housing (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Oakes College (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Oakes College (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Arboretum (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Arboretum (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Tosca Terrace (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Western Dr. (Outer)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        alert.addAction(UIAlertAction(title:"Western Dr. (Inner)", style: .default, handler: { (action) in
-            print("Option 1 selected")
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+        buildBusStopAlert()
 
-        
         // If we don't have access to the user's current location, request it
         if (CLLocationManager.authorizationStatus() != CLAuthorizationStatus.authorizedWhenInUse) {
             locationManager.requestWhenInUseAuthorization()
         }
         
         timer = Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(fetchBusData), userInfo: nil, repeats: true)
-        
-//        let alertController = UIAlertController(title: "Foo", message: "Bar", preferredStyle: .alert)
-//
-//        alertController.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
-//        present(alertController, animated: true, completion: nil)
+    }
+    
+    /*
+     * Called whenever location permissions change.
+     */
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        switch status {
+        case .denied:
+            print("Denied")
+            // Ask user to select a bus stop.
+            self.present(busStopAlert, animated: true, completion: nil)
+            break
+        case .notDetermined:
+            print("Not Determined")
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .authorizedWhenInUse:
+            print("Authorized When In Use")
+            mapView.showsUserLocation = true
+            locationManager.startUpdatingLocation()
+            userLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
+            getClosestBusStopsToUser()
+            print("Closest Bus Stop: \(String(describing: closestBusStopToUser.title))")
+            break
+        default:
+            break
+        }
     }
     
     /*
@@ -441,32 +387,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         // Might want to update the user's closest bus stop here.
     }
     
-    /*
-     * Called whenever location permissions change.
-     */
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        switch status {
-        case .denied:
-            print("Denied")
-            // Todo: Ask user to select a bus stop.
-            break
-        case .notDetermined:
-            print("Not Determined")
-            locationManager.requestWhenInUseAuthorization()
-            break
-        case .authorizedWhenInUse:
-            print("Authorized When In Use")
-            mapView.showsUserLocation = true
-            locationManager.startUpdatingLocation()
-            userLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
-            getClosestBusStopsToUser()
-            print("Closest Bus Stop: \(String(describing: closestBusStopToUser.title))")
-            break
-        default:
-            break
-        }
-    }
-    
     func aggregateEta() {
         for bus in newMainBusList.keys {
             
@@ -732,6 +652,188 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         cwBusStopList.append(cwBusStop10)
         cwBusStopList.append(cwBusStop11)
         cwBusStopList.append(cwBusStop12)
+    }
+    
+    /*
+     * Builds the Bus Stop UIAlertController needed when a user refuses to share the current location with the app.
+     */
+    func buildBusStopAlert() {
+        busStopAlert = UIAlertController(title: "Bus Stop", message: "Choose bus stop you want information for.", preferredStyle: .actionSheet)
+        
+        busStopAlert.addAction(UIAlertAction(title:"Main Entrance (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
+            print("Main Entrance (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Barn Theater (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
+            print("Barn Theater (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
+            print("Lower Campus (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Lower Campus (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_CAMPUS_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.LOWER_CAMPUS_INNER]
+            print("Lower Campus (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
+            print("Lower Campus (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Lower Quarry Rd. (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.LOWER_QUARRY_RD_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.LOWER_QUARRY_RD_INNER]
+            print("Lower Quarry Rd. (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
+            print("East Remote Parking Lot (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"East Remote Parking Lot (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_REMOTE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
+            print("East Remote Parking Lot (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"East Field House (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.EAST_REMOTE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.EAST_FIELD_OUTER]
+            print("East Field House (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Bookstore (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
+            print("Bookstore (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Bookstore (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.BOOKSTORE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
+            print("Bookstore (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Crown College (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.BOOKSTORE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.CROWN_COLLEGE_OUTER]
+            print("Crown College (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
+            print("College 9/10 (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"College 9/10 (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_9_10_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_9_10_INNER]
+            print("College 9/10 (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Science Hill (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
+            print("Science Hill (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Science Hill (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.SCIENCE_HILL_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.SCIENCE_HILL_INNER]
+            print("Science Hill (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Kresge College (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
+            print("Kresge College (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Kresge College (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.KRESGE_COLLEGE_INNER]
+            print("Kresge College (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Kerr Hall (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.KRESGE_COLLEGE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.KERR_HALL_INNER]
+            print("Kerr Hall (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
+            print("College 8/Porter (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"College 8/Porter (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.COLLEGE_8_PORTER_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.COLLEGE_8_PORTER_INNER]
+            print("College 8/Porter (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Family Student Housing (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.FAMILY_STUDENT_HOUSING_OUTER]
+            print("Family Student Housing (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Oakes College (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
+            print("Oakes College (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Oakes College (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.OAKES_COLLEGE_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.OAKES_COLLEGE_INNER]
+            print("Oakes College (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Arboretum (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
+            print("Arboretum (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Arboretum (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.ARBORETUM_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.ARBORETUM_INNER]
+            print("Arboretum (Inner)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Tosca Terrace (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.TOSCA_TERRACE_OUTER]
+            print("Tosca Terrace (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Outer)", style: .default, handler: { (action) in
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
+            self.closestBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
+            print("Western Dr. (Outer)")
+        }))
+        busStopAlert.addAction(UIAlertAction(title:"Western Dr. (Inner)", style: .default, handler: { (action) in
+            self.closestInnerBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
+            self.closestOuterBusStopToUser = self.ccwBusStopList[self.WESTERN_DR_OUTER]
+            self.closestBusStopToUser = self.cwBusStopList[self.WESTERN_DR_INNER]
+            print("Western Dr. (Inner)")
+        }))
     }
     
     /*
