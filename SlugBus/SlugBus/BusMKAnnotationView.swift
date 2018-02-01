@@ -48,19 +48,41 @@ class BusMKAnnotationView: MKAnnotationView {
         
         let busInfoView = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 150))
         
-        let directionLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 300, height: 20))
-        let nextStopLabel = UILabel(frame: CGRect(x: 0, y: 25, width: 300, height: 20))
-        let etaLabel = UILabel(frame: CGRect(x: 0, y: 45, width: 300, height: 20))
+        let directionLabel = UILabel(frame: CGRect(x: 0, y: 5, width: 50, height: 20))
+        let nextStopLabel = UILabel(frame: CGRect(x: 0, y: 25, width: 50, height: 20))
+        let etaLabel = UILabel(frame: CGRect(x: 0, y: 45, width: 50, height: 20))
         
-        directionLabel.text = "Direction: " + busAnnotation.direc
-        nextStopLabel.text = "Next Stop: " + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
-        etaLabel.text = "ETA: " + busAnnotation.actualETA
+        directionLabel.text = "Direction: "// + busAnnotation.direc
+        nextStopLabel.text = "Next Stop: "// + (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
+        etaLabel.text = "ETA: "// + busAnnotation.actualETA
+        
+        // Resize the UILabels.
+        directionLabel.sizeToFit()
+        nextStopLabel.sizeToFit()
+        etaLabel.sizeToFit()
+        
+        let direction = UILabel(frame: CGRect(x: directionLabel.intrinsicContentSize.width, y: 5, width: 50, height: 20))
+        let nextStop = UILabel(frame: CGRect(x: nextStopLabel.intrinsicContentSize.width, y: 25, width: 50, height: 20))
+        let eta = UILabel(frame: CGRect(x: etaLabel.intrinsicContentSize.width, y: 45, width: 50, height: 20))
+        
+        direction.text = busAnnotation.direc
+        nextStop.text = (busAnnotation.subtitle != nil ? busAnnotation.subtitle! : "Still Determining")
+        eta.text = busAnnotation.actualETA
+        
+        direction.sizeToFit()
+        nextStop.sizeToFit()
+        eta.sizeToFit()
+        
+        let nsLayoutWidth = nextStopLabel.intrinsicContentSize.width + nextStop.intrinsicContentSize.width
         
         busInfoView.addSubview(directionLabel)
+        busInfoView.addSubview(direction)
         busInfoView.addSubview(nextStopLabel)
+        busInfoView.addSubview(nextStop)
         busInfoView.addSubview(etaLabel)
+        busInfoView.addSubview(eta)
         
-        let widthConstraint = NSLayoutConstraint(item: busInfoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 300)
+        let widthConstraint = NSLayoutConstraint(item: busInfoView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: nsLayoutWidth)
         let heightConstraint = NSLayoutConstraint(item: busInfoView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 60)
         
         busInfoView.addConstraint(widthConstraint)

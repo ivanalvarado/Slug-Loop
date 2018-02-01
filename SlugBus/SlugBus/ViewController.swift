@@ -1066,7 +1066,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if anView == nil {
                 anView = BusMKAnnotationView(annotation: busAnnotation, reuseIdentifier: reuseId)
                 anView?.canShowCallout = true
-                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
                 anView?.annotation = busAnnotation
             }
