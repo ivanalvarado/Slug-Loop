@@ -402,9 +402,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         mapInfoButton.layer.shadowRadius = 4
         mapInfoButton.layer.masksToBounds = false
         
-        closestBusStopView.layer.cornerRadius = 4
+        closestBusStopView.layer.cornerRadius = 10
         closestBusStopView.layer.borderWidth = 3.0
         closestBusStopView.layer.borderColor = UIColor.white.cgColor
+        closestBusStopView.clipsToBounds = true
+        closestBusStopView.layer.masksToBounds = true
         closestBusStopView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
         closestBusStopView.layer.shadowOffset = CGSize(width: 0, height: 3)
         closestBusStopView.layer.shadowOpacity = 1.0
