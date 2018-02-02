@@ -10,9 +10,13 @@ import UIKit
 
 class InfoPopUpViewController: UIViewController {
 
+    @IBOutlet weak var infoPopUpView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        infoPopUpView.layer.cornerRadius = 10
+//        infoPopUpView.backgroundColor =
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         self.showAnimate()
         // Do any additional setup after loading the view.
@@ -36,8 +40,7 @@ class InfoPopUpViewController: UIViewController {
         });
     }
     
-    func removeAnimate()
-    {
+    func removeAnimate() {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             self.view.alpha = 0.0;
@@ -47,6 +50,14 @@ class InfoPopUpViewController: UIViewController {
                 self.view.removeFromSuperview()
             }
         });
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        let touch: UITouch? = touches.first
+        
+        if touch?.view != infoPopUpView {
+            removeAnimate()
+        }
     }
 
     /*

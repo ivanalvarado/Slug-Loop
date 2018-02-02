@@ -318,6 +318,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="x2Y-h0-Sjs"/>
                     </view>
+                    <connections>
+                        <outlet property="infoPopUpView" destination="ZdU-Hn-g7j" id="F2T-5w-Mvi"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ry7-a1-Hth" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
