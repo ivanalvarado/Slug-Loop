@@ -525,10 +525,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func showHideBusStops() {
         if areBusStopsShowing {
             hideBusStops()
-            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopDark"), for: .normal)
+            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopDark-1"), for: .normal)
         } else {
             displayBusStops()
-            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopLight2"), for: .normal)
+            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopLight-1"), for: .normal)
         }
         areBusStopsShowing = !areBusStopsShowing
     }
@@ -1061,9 +1061,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 anView?.detailCalloutAccessoryView = busStopView
                 
                 if busStopAnnotation.subtitle == "Inner" {
-                    anView.image = UIImage(named: "InnerStop-2")
+                    anView.image = UIImage(named: "InnerStop-5")
                 } else if busStopAnnotation.subtitle == "Outer" {
-                    anView.image = UIImage(named: "OuterStop-2")
+                    anView.image = UIImage(named: "OuterStop-4")
                 }
                 
                 anView?.canShowCallout = true
