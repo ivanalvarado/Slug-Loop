@@ -47,6 +47,7 @@
 		653D7E9F201E9EAE00CC4EEE /* LowerQuarryRdInner.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E82201E9EAD00CC4EEE /* LowerQuarryRdInner.jpg */; };
 		653D7EA0201E9EAE00CC4EEE /* KresgeCollegeOuter.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 653D7E83201E9EAD00CC4EEE /* KresgeCollegeOuter.jpg */; };
 		653D7EA22021341100CC4EEE /* BusMKAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D7EA12021341100CC4EEE /* BusMKAnnotationView.swift */; };
+		653D7EA62024FF7800CC4EEE /* InfoPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653D7EA52024FF7800CC4EEE /* InfoPopUpViewController.swift */; };
 		65824DC92019219200D78097 /* Bus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65824DC82019219200D78097 /* Bus.swift */; };
 		C16616962CD02A7EC84AF6C0 /* Pods_SlugBus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB8B13175EB9EE94925059E7 /* Pods_SlugBus.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +116,7 @@
 		653D7E82201E9EAD00CC4EEE /* LowerQuarryRdInner.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = LowerQuarryRdInner.jpg; sourceTree = "<group>"; };
 		653D7E83201E9EAD00CC4EEE /* KresgeCollegeOuter.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = KresgeCollegeOuter.jpg; sourceTree = "<group>"; };
 		653D7EA12021341100CC4EEE /* BusMKAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusMKAnnotationView.swift; sourceTree = "<group>"; };
+		653D7EA52024FF7800CC4EEE /* InfoPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoPopUpViewController.swift; sourceTree = "<group>"; };
 		65824DC82019219200D78097 /* Bus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bus.swift; sourceTree = "<group>"; };
 		917D1BC1938BD044CF01D2D2 /* Pods-SlugBus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.debug.xcconfig"; sourceTree = "<group>"; };
 		92C499F548B25CC85186AA87 /* Pods-SlugBus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SlugBus.release.xcconfig"; path = "Pods/Target Support Files/Pods-SlugBus/Pods-SlugBus.release.xcconfig"; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				653D7E6D201E9EA700CC4EEE /* WesternDrOuter.jpg */,
 				65824DC82019219200D78097 /* Bus.swift */,
 				653D7EA12021341100CC4EEE /* BusMKAnnotationView.swift */,
+				653D7EA52024FF7800CC4EEE /* InfoPopUpViewController.swift */,
 			);
 			path = SlugBus;
 			sourceTree = "<group>";
@@ -479,6 +482,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				652A69DA2016CC53001E9DC5 /* BusStop.swift in Sources */,
+				653D7EA62024FF7800CC4EEE /* InfoPopUpViewController.swift in Sources */,
 				652A69A920166D78001E9DC5 /* ViewController.swift in Sources */,
 				65824DC92019219200D78097 /* Bus.swift in Sources */,
 				652A69A720166D78001E9DC5 /* AppDelegate.swift in Sources */,

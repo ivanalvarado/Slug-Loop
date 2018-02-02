@@ -546,6 +546,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     
     @IBAction func showMapInfo() {
         print("MapInfo!!!")
+        let popOverVc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "infoPopUpId") as! InfoPopUpViewController
+        self.addChildViewController(popOverVc)
+        popOverVc.view.frame = self.view.frame
+        self.view.addSubview(popOverVc.view)
+        popOverVc.didMove(toParentViewController: self)
     }
     
     /*
