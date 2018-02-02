@@ -39,6 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBOutlet weak var recenterButton: UIButton!
     @IBOutlet weak var closestBusStopView: UIView!
     @IBOutlet weak var closestBusStopLabel: UILabel!
+    @IBOutlet weak var mapInfoButton: UIButton!
     
     var locationManager: CLLocationManager!
     var userLocation: CLLocation!
@@ -379,6 +380,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func updateButtonUi() {
         toggleBusStopsButton.layer.cornerRadius = 4
         toggleBusStopsButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        toggleBusStopsButton.backgroundColor = UIColor.clear
         toggleBusStopsButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         toggleBusStopsButton.layer.shadowOpacity = 1.0
         toggleBusStopsButton.layer.shadowRadius = 4
@@ -386,10 +388,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         
         recenterButton.layer.cornerRadius = 4
         recenterButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        recenterButton.backgroundColor = UIColor.clear
         recenterButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         recenterButton.layer.shadowOpacity = 1.0
         recenterButton.layer.shadowRadius = 4
         recenterButton.layer.masksToBounds = false
+        
+        mapInfoButton.layer.cornerRadius = 4
+        mapInfoButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
+        mapInfoButton.backgroundColor = UIColor.clear
+        mapInfoButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        mapInfoButton.layer.shadowOpacity = 1.0
+        mapInfoButton.layer.shadowRadius = 4
+        mapInfoButton.layer.masksToBounds = false
         
         closestBusStopView.layer.cornerRadius = 4
         closestBusStopView.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
@@ -514,10 +525,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     @IBAction func showHideBusStops() {
         if areBusStopsShowing {
             hideBusStops()
-            toggleBusStopsButton.setTitle("Show", for: .normal)
+            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopDark"), for: .normal)
         } else {
             displayBusStops()
-            toggleBusStopsButton.setTitle("Hide", for: .normal)
+            toggleBusStopsButton.setImage(UIImage(named: "ToggleStopLight2"), for: .normal)
         }
         areBusStopsShowing = !areBusStopsShowing
     }
@@ -527,6 +538,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
      */
     @IBAction func recenterMapView() {
         mapView.setRegion(MKCoordinateRegionMake(UCSC_CAMPUS_LOCATION, DISTANCE_SPAN), animated: true)
+    }
+    
+    @IBAction func showMapInfo() {
+        print("MapInfo!!!")
     }
     
     /*
@@ -1073,6 +1088,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
         }
         
         return anView
+    }
+    
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print("CHANGED!!!")
     }
     
     /*
