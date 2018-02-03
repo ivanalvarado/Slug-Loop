@@ -16,6 +16,10 @@ class InfoPopUpViewController: UIViewController {
         super.viewDidLoad()
         
         infoPopUpView.layer.cornerRadius = 10
+        infoPopUpView.layer.borderWidth = 3.0
+        infoPopUpView.layer.borderColor = UIColor.white.cgColor
+        infoPopUpView.clipsToBounds = true
+        infoPopUpView.layer.masksToBounds = true
 //        infoPopUpView.backgroundColor =
         self.view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         self.showAnimate()
