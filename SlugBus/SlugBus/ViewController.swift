@@ -176,9 +176,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                                 self.determineBusDirections()
                                 self.getClosestBusStopToBuses()
                                 self.calculateEtaOfBuses()
-                                self.convertEtaToMinutes()
-                                self.printBusInfo()
-                                self.updateAnnotationViews()
                             }
                             
                         } catch {
@@ -492,12 +489,20 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             if newMainBusList[bus]?.direc == "Inner" {
                 calculateEtaOfBusToClosestStop(source: newMainBusList[bus]!, destination: cwBusStopList[(newMainBusList[bus]?.closestInnerStop)!]) { (eta: Int) -> Void in
                     self.newMainBusList[bus]?.innerETA += eta
+                    
+                    self.convertEtaToMinutes()
+                    self.printBusInfo()
+                    self.updateAnnotationViews()
                 }
             }
             
             if newMainBusList[bus]?.direc == "Outer" {
                 calculateEtaOfBusToClosestStop(source: newMainBusList[bus]!, destination: ccwBusStopList[(newMainBusList[bus]?.closestOuterStop)!]) { (eta: Int) -> Void in
                     self.newMainBusList[bus]?.outerETA += eta
+                    
+                    self.convertEtaToMinutes()
+                    self.printBusInfo()
+                    self.updateAnnotationViews()
                 }
             }
         }
@@ -510,7 +515,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let etaInMinutes = etaAsWhole! / 60
                 let etaInSeconds = etaAsWhole! % 60
                 
-                newMainBusList[bus]?.actualETA = String(etaInMinutes) + " Minutes, " + String(etaInSeconds) + " Seconds"
+                newMainBusList[bus]?.actualETA = String(etaInMinutes) + (etaInMinutes == 1 ? " Minute, " : " Minutes, ") + String(etaInSeconds) + (etaInSeconds == 1 ? " Second" : " Seconds")
             }
             
             if newMainBusList[bus]?.direc == "Outer" {
@@ -518,7 +523,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 let etaInMinutes = etaAsWhole! / 60
                 let etaInSeconds = etaAsWhole! % 60
                 
-                newMainBusList[bus]?.actualETA = String(etaInMinutes) + " Minutes, " + String(etaInSeconds) + " Seconds"
+                newMainBusList[bus]?.actualETA = String(etaInMinutes) + (etaInMinutes == 1 ? " Minute, " : " Minutes, ") + String(etaInSeconds) + (etaInSeconds == 1 ? " Second" : " Seconds")
             }
         }
     }
