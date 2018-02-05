@@ -70,17 +70,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		652A69A320166D78001E9DC5 /* SlugBus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SlugBus.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		652A69A320166D78001E9DC5 /* Slug Loop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Slug Loop.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		652A69A620166D78001E9DC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		652A69A820166D78001E9DC5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		652A69AB20166D78001E9DC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		652A69AD20166D78001E9DC5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		652A69B020166D78001E9DC5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		652A69B220166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		652A69B720166D78001E9DC5 /* SlugBusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlugBusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652A69B720166D78001E9DC5 /* Slug LoopTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slug LoopTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		652A69BB20166D78001E9DC5 /* SlugBusTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlugBusTests.swift; sourceTree = "<group>"; };
 		652A69BD20166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		652A69C220166D78001E9DC5 /* SlugBusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SlugBusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		652A69C220166D78001E9DC5 /* Slug LoopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Slug LoopUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		652A69C620166D78001E9DC5 /* SlugBusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlugBusUITests.swift; sourceTree = "<group>"; };
 		652A69C820166D78001E9DC5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		652A69D520166F98001E9DC5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
@@ -166,9 +166,9 @@
 		652A69A420166D78001E9DC5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				652A69A320166D78001E9DC5 /* SlugBus.app */,
-				652A69B720166D78001E9DC5 /* SlugBusTests.xctest */,
-				652A69C220166D78001E9DC5 /* SlugBusUITests.xctest */,
+				652A69A320166D78001E9DC5 /* Slug Loop.app */,
+				652A69B720166D78001E9DC5 /* Slug LoopTests.xctest */,
+				652A69C220166D78001E9DC5 /* Slug LoopUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -259,9 +259,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		652A69A220166D78001E9DC5 /* SlugBus */ = {
+		652A69A220166D78001E9DC5 /* Slug Loop */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 652A69CB20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBus" */;
+			buildConfigurationList = 652A69CB20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug Loop" */;
 			buildPhases = (
 				A1BA03177B70FF835CC124C9 /* [CP] Check Pods Manifest.lock */,
 				652A699F20166D78001E9DC5 /* Sources */,
@@ -274,14 +274,14 @@
 			);
 			dependencies = (
 			);
-			name = SlugBus;
+			name = "Slug Loop";
 			productName = SlugBus;
-			productReference = 652A69A320166D78001E9DC5 /* SlugBus.app */;
+			productReference = 652A69A320166D78001E9DC5 /* Slug Loop.app */;
 			productType = "com.apple.product-type.application";
 		};
-		652A69B620166D78001E9DC5 /* SlugBusTests */ = {
+		652A69B620166D78001E9DC5 /* Slug LoopTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 652A69CE20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBusTests" */;
+			buildConfigurationList = 652A69CE20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug LoopTests" */;
 			buildPhases = (
 				652A69B320166D78001E9DC5 /* Sources */,
 				652A69B420166D78001E9DC5 /* Frameworks */,
@@ -292,14 +292,14 @@
 			dependencies = (
 				652A69B920166D78001E9DC5 /* PBXTargetDependency */,
 			);
-			name = SlugBusTests;
+			name = "Slug LoopTests";
 			productName = SlugBusTests;
-			productReference = 652A69B720166D78001E9DC5 /* SlugBusTests.xctest */;
+			productReference = 652A69B720166D78001E9DC5 /* Slug LoopTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		652A69C120166D78001E9DC5 /* SlugBusUITests */ = {
+		652A69C120166D78001E9DC5 /* Slug LoopUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 652A69D120166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBusUITests" */;
+			buildConfigurationList = 652A69D120166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug LoopUITests" */;
 			buildPhases = (
 				652A69BE20166D78001E9DC5 /* Sources */,
 				652A69BF20166D78001E9DC5 /* Frameworks */,
@@ -310,9 +310,9 @@
 			dependencies = (
 				652A69C420166D78001E9DC5 /* PBXTargetDependency */,
 			);
-			name = SlugBusUITests;
+			name = "Slug LoopUITests";
 			productName = SlugBusUITests;
-			productReference = 652A69C220166D78001E9DC5 /* SlugBusUITests.xctest */;
+			productReference = 652A69C220166D78001E9DC5 /* Slug LoopUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -346,7 +346,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 652A699E20166D78001E9DC5 /* Build configuration list for PBXProject "SlugBus" */;
+			buildConfigurationList = 652A699E20166D78001E9DC5 /* Build configuration list for PBXProject "Slug Loop" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -359,9 +359,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				652A69A220166D78001E9DC5 /* SlugBus */,
-				652A69B620166D78001E9DC5 /* SlugBusTests */,
-				652A69C120166D78001E9DC5 /* SlugBusUITests */,
+				652A69A220166D78001E9DC5 /* Slug Loop */,
+				652A69B620166D78001E9DC5 /* Slug LoopTests */,
+				652A69C120166D78001E9DC5 /* Slug LoopUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -511,12 +511,12 @@
 /* Begin PBXTargetDependency section */
 		652A69B920166D78001E9DC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 652A69A220166D78001E9DC5 /* SlugBus */;
+			target = 652A69A220166D78001E9DC5 /* Slug Loop */;
 			targetProxy = 652A69B820166D78001E9DC5 /* PBXContainerItemProxy */;
 		};
 		652A69C420166D78001E9DC5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 652A69A220166D78001E9DC5 /* SlugBus */;
+			target = 652A69A220166D78001E9DC5 /* Slug Loop */;
 			targetProxy = 652A69C320166D78001E9DC5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -692,7 +692,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlugBus.app/SlugBus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slug Loop.app/Slug Loop";
 			};
 			name = Debug;
 		};
@@ -708,7 +708,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SlugBus.app/SlugBus";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Slug Loop.app/Slug Loop";
 			};
 			name = Release;
 		};
@@ -745,7 +745,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		652A699E20166D78001E9DC5 /* Build configuration list for PBXProject "SlugBus" */ = {
+		652A699E20166D78001E9DC5 /* Build configuration list for PBXProject "Slug Loop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				652A69C920166D78001E9DC5 /* Debug */,
@@ -754,7 +754,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		652A69CB20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBus" */ = {
+		652A69CB20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug Loop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				652A69CC20166D78001E9DC5 /* Debug */,
@@ -763,7 +763,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		652A69CE20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBusTests" */ = {
+		652A69CE20166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug LoopTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				652A69CF20166D78001E9DC5 /* Debug */,
@@ -772,7 +772,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		652A69D120166D78001E9DC5 /* Build configuration list for PBXNativeTarget "SlugBusUITests" */ = {
+		652A69D120166D78001E9DC5 /* Build configuration list for PBXNativeTarget "Slug LoopUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				652A69D220166D78001E9DC5 /* Debug */,
