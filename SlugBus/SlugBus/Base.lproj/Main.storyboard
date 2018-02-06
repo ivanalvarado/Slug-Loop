@@ -241,7 +241,9 @@
                                             <constraint firstAttribute="height" constant="30" id="Wur-0m-KiM"/>
                                             <constraint firstAttribute="width" constant="46" id="dlR-mS-hvI"/>
                                         </constraints>
-                                        <state key="normal" title="Close"/>
+                                        <state key="normal" title="Close">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="closeInfoPopUp" destination="MvT-El-pBE" eventType="touchUpInside" id="3fd-Fj-IgO"/>
                                         </connections>

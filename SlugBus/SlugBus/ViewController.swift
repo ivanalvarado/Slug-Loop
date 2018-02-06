@@ -730,10 +730,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                         }
                         
                         if UIApplication.shared.canOpenURL(settingsUrl) {
-                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
-                                // Checking for setting is opened or not
-                                print("Setting is opened: \(success)")
-                            })
+                            if #available(iOS 10.0, *) {
+                                UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                    // Checking for setting is opened or not
+                                    print("Setting is opened: \(success)")
+                                })
+                            } else {
+                                // Fallback on earlier versions
+                            }
                         }
                     }
                     
