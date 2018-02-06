@@ -1155,7 +1155,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 }
                 
                 anView?.canShowCallout = true
-                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+//                anView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
             } else {
                 anView?.annotation = busStopAnnotation
             }
