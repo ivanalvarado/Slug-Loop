@@ -708,6 +708,39 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
     func buildBusStopAlert() {
         busStopAlert = UIAlertController(title: "Bus Stop", message: "Choose bus stop you want information for.", preferredStyle: .actionSheet)
         
+        busStopAlert.addAction(UIAlertAction(title: "Current Location", style: .default, handler: {(action) in
+            // If we don't have access to the user's current location, request it
+            if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.denied) {
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "Location Access Denied", message: "GPS access is restricted. In order to use tracking, please enable GPS in the Settings app under Privacy -> Location Services or choose a bus stop manually.", preferredStyle: .alert)
+                    
+                    // Setting button action
+                    let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) -> Void in
+                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                            return
+                        }
+                        
+                        if UIApplication.shared.canOpenURL(settingsUrl) {
+                            UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                                // Checking for setting is opened or not
+                                print("Setting is opened: \(success)")
+                            })
+                        }
+                    }
+                    
+                    alertController.addAction(settingsAction)
+                    // Cancel button action
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .default){ (_) -> Void in
+                        // Magic is here for cancel button
+                    }
+                    alertController.addAction(cancelAction)
+                    // This part is important to show the alert controller ( You may delete "self." from present )
+                    self.present(alertController, animated: true, completion: nil)
+                }
+                
+            }
+        }))
+        
         busStopAlert.addAction(UIAlertAction(title:"Main Entrance (Outer)", style: .default, handler: { (action) in
             self.closestOuterBusStopToUser = self.ccwBusStopList[self.MAIN_ENTRANCE_OUTER]
             self.closestInnerBusStopToUser = self.cwBusStopList[self.BARN_THEATER_INNER]
