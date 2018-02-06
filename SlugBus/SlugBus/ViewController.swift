@@ -294,9 +294,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
             let busAngle = determineBusAngle(lat: lat, lon: lon, quadrant: quadrant)
             
             if isOld { // Old data.
-                oldMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string! + " " + bus.1["id"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
+                oldMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             } else {
-                newMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string! + " " + bus.1["id"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
+                newMainBusList[bus.1["id"].string!] = (Bus(title: bus.1["type"].string!, coordinate: newMarker.coordinate, id: bus.1["id"].string!, quadrant: quadrant, angle: busAngle, exists: true))
             }
         }
     }
