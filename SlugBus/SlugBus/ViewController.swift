@@ -723,25 +723,23 @@ class ViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDele
                 DispatchQueue.main.async {
                     let alertController = UIAlertController(title: "Location Access Denied", message: "GPS access is restricted. In order to use tracking, please enable GPS in the Settings app under Privacy -> Location Services or choose a bus stop manually.", preferredStyle: .alert)
                     
-                    // Setting button action
-                    let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) -> Void in
-                        guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
-                            return
-                        }
-                        
-                        if UIApplication.shared.canOpenURL(settingsUrl) {
-                            if #available(iOS 10.0, *) {
+                    // Setting button action, opening URL only available from iOS 10.0 and up.
+                    if #available(iOS 10.0, *) {
+                        let settingsAction = UIAlertAction(title: "Go to Settings", style: .default) { (_) -> Void in
+                            guard let settingsUrl = URL(string: UIApplicationOpenSettingsURLString) else {
+                                return
+                            }
+                            
+                            if UIApplication.shared.canOpenURL(settingsUrl) {
                                 UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
                                     // Checking for setting is opened or not
                                     print("Setting is opened: \(success)")
                                 })
-                            } else {
-                                // Fallback on earlier versions
                             }
                         }
+                        alertController.addAction(settingsAction)
                     }
                     
-                    alertController.addAction(settingsAction)
                     // Cancel button action
                     let cancelAction = UIAlertAction(title: "Cancel", style: .default){ (_) -> Void in
                         // Magic is here for cancel button
